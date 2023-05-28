@@ -8,6 +8,10 @@ const api = () => {
     const account = new Account(appwrite)
     const databases = new Databases(appwrite)
 
+    const getSession = async () => {
+      return await account.get()
+    }
+
     const deleteCurrentSession = () => {
         return account.deleteSession('current')
     }
@@ -16,6 +20,7 @@ const api = () => {
         appwrite,
         account,
         databases,
+        getSession,
         deleteCurrentSession,
     }
 }
