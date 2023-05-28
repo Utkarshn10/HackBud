@@ -1,27 +1,38 @@
-import {  Account, Database, Client } from 'appwrite'
+import { Account, Databases, Client } from 'appwrite'
 
-
-let appwrite = new Client()
+const api = () => {
+    let appwrite = new Client()
     appwrite.setEndpoint('https://cloud.appwrite.io/v1')
     appwrite.setProject(process.env.NEXT_PUBLIC_PROJECT_ID)
 
     const account = new Account(appwrite)
-    const database = new Database(appwrite)
+    const databases = new Databases(appwrite)
 
+    const deleteCurrentSession = () => {
+        return account.deleteSession('current')
+    }
 
-const api = () => {
-  createAccount: (email, password, name) => {
-    return appwrite.account.create(email, password, name);
-  },
+    return {
+        appwrite,
+        account,
+        databases,
+        deleteCurrentSession,
+    }
+}
 
-  getAccount: () => {
-    let account = appwrite.account;
-    return account.get();
-  },
+// const api = () => {
+//   createAccount: (email, password, name) => {
+//     return appwrite.account.create(email, password, name);
+//   },
 
-  createSession: (email, password) => {
-    return appwrite.account.createSession(email, password, ['*'], []);
-  },
+//   getAccount: () => {
+//     let account = appwrite.account;
+//     return account.get();
+//   },
+
+//   createSession: (email, password) => {
+//     return appwrite.account.createSession(email, password, ['*'], []);
+//   },
 
 //   deleteCurrentSession: () => {
 //     return api.provider().account.deleteSession('current');
@@ -55,6 +66,5 @@ const api = () => {
 //     });
 //   },
 // };
-}
 
 export default api
