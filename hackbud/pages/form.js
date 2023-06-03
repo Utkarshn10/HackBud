@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import api from '@/components/appwrite'
-import { ID } from 'appwrite'
+import { ID, Permission, Role } from 'appwrite'
 
 const Form = () => {
     const { account, getSession, databases } = api()
@@ -14,42 +14,45 @@ const Form = () => {
     const [githubURL, setGithubURL] = useState('')
     const [twitterURL, setTwitterURL] = useState('')
 
-    const handleFormSubmit = (e) => {
+    function SubmitForm(e) {
         e.preventDefault()
-
-        // Create an object with form data
-        const formData = {
-            hackathonName,
-            teamName,
-            teamDescription,
-            teamSkills,
-            requiredTeammates,
+        const userId = account.client.config.project
+        const name = "test1";
+        const about = teamDescription
+        const available = true;
+        const contact = contactEmail;
+        const github_url = githubURL;
+        const twitter_url = twitterURL;
+        const skills = teamSkills;
+        console.log(userId)
+        const data = {
+            // hackathonName,
+            // teamName,
+            name,
+            about,
+            skills,
             country,
-            contactEmail,
-            githubURL,
-            twitterURL,
+            contact,
+            github_url,
+            twitter_url,
+            available,
         }
-
-        // Do something with the form data (e.g., send it to an API)
-        console.log(formData)
-    }
-
-    function SubmitForm() {
         databases
             .createDocument(
-                
+              
                 ID.unique(),
-                {
-                    hackathonName,
-                    teamName,
-                    teamDescription,
-                    teamSkills,
-                    requiredTeammates,
-                    country,
-                    contactEmail,
-                    githubURL,
-                    twitterURL,
-                }
+                data,
+                [
+                    (Permission.read(Role.any()),
+                    // Permission.update(Role.team("writers")), 
+                    Permission.write(Role.any()), 
+                    // Permission.delete(Role.team("writers")), 
+                    // Permission.delete(Role.team("writers")), 
+                    // Permission.update(Role.user(userId)),
+                    // Permission.write(Role.user(userId)),
+                    // Permission.delete(Role.user(userId))
+                    ),
+                ]
             )
             .then((response) => {
                 console.log(response)
@@ -72,7 +75,7 @@ const Form = () => {
     }
 
     return (
-        <form onSubmit={handleFormSubmit} className="max-w-md mx-auto">
+        <form className="max-w-md mx-auto">
             <div className="mb-4">
                 <label
                     htmlFor="hackathonName"
