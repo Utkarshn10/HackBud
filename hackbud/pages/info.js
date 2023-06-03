@@ -18,12 +18,8 @@ function Info() {
     return (
         <div>
             <h1>Info</h1>
-            <Link href="/form">
-                Looking for a teammate ?
-            </Link>
-            <Link href="/form">
-                Want to be part of a team ?
-            </Link>
+            <Link href="/form">Want to be part of a team ?</Link>
+            <Link href="/need-teammate">Looking for a teammate ?</Link>
         </div>
     )
 }
