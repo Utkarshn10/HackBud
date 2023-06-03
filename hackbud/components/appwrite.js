@@ -9,11 +9,18 @@ const api = () => {
     const databases = new Databases(appwrite)
 
     const getSession = async () => {
-      return await account.get()
+        return await account.get()
     }
 
     const deleteCurrentSession = () => {
         return account.deleteSession('current')
+    }
+
+    const listDocuments = (databaseId, collectionId) => {
+        return databases.listDocuments(
+            '6472e9626de7a4f0ed84',
+            '6472e99701633339b475'
+        )
     }
 
     return {
@@ -21,14 +28,10 @@ const api = () => {
         account,
         databases,
         getSession,
+        listDocuments,
         deleteCurrentSession,
     }
 }
-
-// const api = () => {
-//   createAccount: (email, password, name) => {
-//     return appwrite.account.create(email, password, name);
-//   },
 
 //   getAccount: () => {
 //     let account = appwrite.account;
@@ -37,10 +40,6 @@ const api = () => {
 
 //   createSession: (email, password) => {
 //     return appwrite.account.createSession(email, password, ['*'], []);
-//   },
-
-//   deleteCurrentSession: () => {
-//     return api.provider().account.deleteSession('current');
 //   },
 
 //   createDocument: (databaseId, collectionId, data, read, write) => {
@@ -52,10 +51,7 @@ const api = () => {
 //     });
 //   },
 
-//   listDocuments: (databaseId, collectionId) => {
-//     return api.provider().database.listDocuments(databaseId, collectionId);
-//   },
-
+//
 //   updateDocument: (databaseId, collectionId, documentId, data) => {
 //     return api.provider().database.updateDocument(databaseId, {
 //       collectionId,

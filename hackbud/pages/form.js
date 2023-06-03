@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import api from '@/components/appwrite'
+import { ID } from 'appwrite'
 
 const Form = () => {
-    const { account, getSession } = api()
+    const { account, getSession, databases } = api()
     const [hackathonName, setHackathonName] = useState('')
     const [teamName, setTeamName] = useState('')
     const [teamDescription, setTeamDescription] = useState('')
@@ -33,6 +34,31 @@ const Form = () => {
         console.log(formData)
     }
 
+    function SubmitForm() {
+        databases
+            .createDocument(
+                
+                ID.unique(),
+                {
+                    hackathonName,
+                    teamName,
+                    teamDescription,
+                    teamSkills,
+                    requiredTeammates,
+                    country,
+                    contactEmail,
+                    githubURL,
+                    twitterURL,
+                }
+            )
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     function ResetForm() {
         setHackathonName('')
         setTeamName('')
@@ -59,7 +85,7 @@ const Form = () => {
                     id="hackathonName"
                     value={hackathonName}
                     onChange={(e) => setHackathonName(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full text-black px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                     required
                 />
             </div>
@@ -75,7 +101,7 @@ const Form = () => {
                     id="teamName"
                     value={teamName}
                     onChange={(e) => setTeamName(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full px-3 py-2 text-black border rounded-md focus:outline-none focus:border-blue-500"
                     required
                 />
             </div>
@@ -90,7 +116,7 @@ const Form = () => {
                     id="teamDescription"
                     value={teamDescription}
                     onChange={(e) => setTeamDescription(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
                     required
                 />
             </div>
@@ -106,7 +132,7 @@ const Form = () => {
                     id="teamSkills"
                     value={teamSkills}
                     onChange={(e) => setTeamSkills(e.target.value.split(','))}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
                     required
                 />
             </div>
@@ -122,7 +148,7 @@ const Form = () => {
                     id="requiredTeammates"
                     value={requiredTeammates}
                     onChange={(e) => setRequiredTeammates(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
                     required
                 />
             </div>
@@ -138,7 +164,7 @@ const Form = () => {
                     id="country"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
                     required
                 />
             </div>
@@ -154,7 +180,7 @@ const Form = () => {
                     id="contactEmail"
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
                     required
                 />
             </div>
@@ -170,7 +196,7 @@ const Form = () => {
                     id="githubURL"
                     value={githubURL}
                     onChange={(e) => setGithubURL(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
                     required
                 />
             </div>
@@ -186,7 +212,7 @@ const Form = () => {
                     id="twitterURL"
                     value={twitterURL}
                     onChange={(e) => setTwitterURL(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-blue-500"
                 />
             </div>
             <div className="flex justify-center">
@@ -199,7 +225,7 @@ const Form = () => {
                 </button>
                 <button
                     type="submit"
-                    onClick={handleFormSubmit}
+                    onClick={SubmitForm}
                     className="px-4 py-2 mx-4 font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600"
                 >
                     Submit
