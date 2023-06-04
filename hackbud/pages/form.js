@@ -17,13 +17,13 @@ const Form = () => {
     function SubmitForm(e) {
         e.preventDefault()
         const userId = account.client.config.project
-        const name = "test1";
+        const name = 'test1'
         const about = teamDescription
-        const available = true;
-        const contact = contactEmail;
-        const github_url = githubURL;
-        const twitter_url = twitterURL;
-        const skills = teamSkills;
+        const available = true
+        const contact = contactEmail
+        const github_url = githubURL
+        const twitter_url = twitterURL
+        const skills = teamSkills
         console.log(userId)
         const data = {
             // hackathonName,
@@ -39,19 +39,19 @@ const Form = () => {
         }
         databases
             .createDocument(
-              
+                process.env.NEXT_PUBLIC_DB_ID,
+                process.env.NEXT_PUBLIC_Collection_need_team_ID,
                 ID.unique(),
                 data,
                 [
                     (Permission.read(Role.any()),
-                    // Permission.update(Role.team("writers")), 
-                    Permission.write(Role.any()), 
-                    // Permission.delete(Role.team("writers")), 
-                    // Permission.delete(Role.team("writers")), 
+                    // Permission.update(Role.team("writers")),
+                    Permission.write(Role.any())),
+                    // Permission.delete(Role.team("writers")),
+                    // Permission.delete(Role.team("writers")),
                     // Permission.update(Role.user(userId)),
                     // Permission.write(Role.user(userId)),
                     // Permission.delete(Role.user(userId))
-                    ),
                 ]
             )
             .then((response) => {

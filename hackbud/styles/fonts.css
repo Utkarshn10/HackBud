@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Orkney';
+    src: url('/fonts/Orkney-regular.otf') format('opentype');
+    /* Add additional font file formats and their paths if applicable */
+    /* For example:
+       src: url('/fonts/orkney-regular.ttf') format('truetype'),
+            url('/fonts/orkney-regular.woff') format('woff'),
+            url('/fonts/orkney-regular.woff2') format('woff2');
+    */
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
