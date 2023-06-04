@@ -1,11 +1,14 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Transition } from '@headlessui/react'
+import api from '@/components/appwrite'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [isTabSelected, setIsTabSelected] = useState('')
+    const {getSession}  = api()
 
+    console.log(getSession)
 
     return (
         <div>
