@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { AiFillGithub, AiOutlineMail, AiOutlineTwitter } from 'react-icons/ai'
 
-function Card({ index, item }) {
+function CardNeedTeammate({ index, item }) {
     const [date, setDate] = useState('')
     const colors = ['#e3dbfa', '#fbe2f4', '#ffe1cc', '#d4f6ed']
     useEffect(() => {
@@ -26,7 +26,7 @@ function Card({ index, item }) {
                 style={{ backgroundColor: colors[index % colors.length] }}
             >
                 <div className="m-2">
-                    <div className='mt-2'></div>
+                    <div className="mt-2"></div>
                     <div className="w-1/3 border font-bold rounded-3xl flex items-center justify-center bg-white text-black text-xs py-2 ">
                         <h2 className="">{date}</h2>
                     </div>
@@ -81,4 +81,5 @@ function Card({ index, item }) {
         </div>
     )
 }
-export default Card
+
+export default CardNeedTeammate
