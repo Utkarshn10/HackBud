@@ -31,7 +31,7 @@ function Teams() {
     })
     return (
         <>
-            <div className="grid grid-cols-4 min-h-screen py-2 bg-white">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2 bg-white">
                 {data.length > 0 &&
                     data.map((item, index) => (
                         <div className='mx-3'>

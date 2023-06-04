@@ -12,7 +12,7 @@ const Form = () => {
     const [country, setCountry] = useState('')
     const [contactEmail, setContactEmail] = useState('')
     const [githubURL, setGithubURL] = useState('')
-    const [twitterURL, setTwitterURL] = useState('')
+    const [twitterURL, setTwitterURL] = useState(null)
 
     function SubmitForm(e) {
         e.preventDefault()
