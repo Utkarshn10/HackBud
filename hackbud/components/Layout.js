@@ -5,7 +5,7 @@ export default function Layout({ children }) {
     return (
       <>
         <Navbar />
-        <main>{children}</main>
+        <main className="flex items-center justify-center bg-white py-8">{children}</main>
         <Footer />
       </>
     );

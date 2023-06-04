@@ -6,14 +6,6 @@ import Link from 'next/link'
 function Info() {
     const router = useRouter()
     const { account, listD, getSession } = api()
-    const [postInfoTeam, setPostInfoTeam] = useState(false)
-    const [postInfoTeammate, setPostInfoTeammate] = useState(false)
-
-    useEffect(() => {}, [])
-
-    const handlePostInfoTeam = () => {}
-
-    const handlePostInfoTeammate = () => {}
 
     return (
         <div>

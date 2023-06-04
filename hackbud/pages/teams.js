@@ -30,8 +30,13 @@ function Teams() {
         })
     })
     return (
-        <>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2 bg-white">
+        <div className=' bg-white'>
+            <div className='flex text-left'>
+                <h1 className="text-3xl font-orkney font-bold mb-4 text-black  ml-3">
+                    Recommended Teams
+                </h1>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2">
                 {data.length > 0 &&
                     data.map((item, index) => (
                         <div className="mx-3">
@@ -39,7 +44,7 @@ function Teams() {
                         </div>
                     ))}
             </div>
-        </>
+        </div>
     )
 }
 
