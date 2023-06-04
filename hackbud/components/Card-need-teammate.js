@@ -22,13 +22,16 @@ function CardNeedTeammate({ index, item }) {
     return (
         <div className="w-full border rounded-xl border-slate-300 ">
             <div
-                className={`bg-${colors[index % colors.length]} rounded-xl m-1`}
+                className={`bg-${
+                    colors[index % colors.length]
+                } rounded-xl m-1.5`}
                 style={{ backgroundColor: colors[index % colors.length] }}
             >
-                <div className="m-2">
-                    <div className="mt-2"></div>
-                    <div className="w-1/3 border font-bold rounded-3xl flex items-center justify-center bg-white text-black text-xs py-2 ">
-                        <h2 className="">{date}</h2>
+                <div
+                    className="mx-3 py-1"
+                >
+                    <div className="w-1/3 border my-2 rounded-3xl flex items-center justify-center bg-white text-black">
+                        <h2 className="py-2 text-xs font-bold">{date}</h2>
                     </div>
 
                     <div className="my-4 text-black">
@@ -49,7 +52,7 @@ function CardNeedTeammate({ index, item }) {
                     </div>
                 </div>
             </div>
-
+x
             <h2 className="my-3 text-xs text-black mx-4 font-orkney">
                 Required teammates: 2
             </h2>

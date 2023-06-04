@@ -9,7 +9,14 @@ const api = () => {
     const databases = new Databases(appwrite)
 
     const getSession = async () => {
-        return await account.get()
+        const response = await sdk.account.getSessions()
+        const sessions = response.sessions
+
+        // Find the OAuth session
+        const oAuthSession = sessions.find(
+            (session) => session.type === 'oauth'
+        )
+        return oAuthSession
     }
 
     const deleteCurrentSession = () => {
