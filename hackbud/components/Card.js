@@ -25,8 +25,8 @@ function Card({ index, item }) {
                 className={`bg-${colors[index % colors.length]} rounded-xl m-1`}
                 style={{ backgroundColor: colors[index % colors.length] }}
             >
-                <div className="m-2">
-                    <div className='mt-2'></div>
+                <div className="mx-3 py-1">
+                    <div className="mt-2"></div>
                     <div className="w-1/3 border font-bold rounded-3xl flex items-center justify-center bg-white text-black text-xs py-2 ">
                         <h2 className="">{date}</h2>
                     </div>
