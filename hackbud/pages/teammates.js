@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import api from '@/components/appwrite'
 import { ID, Permission, Role } from 'appwrite'
-import Card from '@/components/Card'
+import CardNeedTeammate from '@/components/Card-need-teammate'
 
-function Teams() {
+function Teammates() {
     const { account, getSession, databases } = api()
     const [data, setData] = useState([])
 
@@ -34,8 +34,8 @@ function Teams() {
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2 bg-white">
                 {data.length > 0 &&
                     data.map((item, index) => (
-                        <div className="mx-3">
-                            <Card index={index} item={item} />
+                        <div className='mx-3'>
+                            <CardNeedTeammate index={index} item={item} />
                         </div>
                     ))}
             </div>
@@ -43,4 +43,4 @@ function Teams() {
     )
 }
 
-export default Teams
+export default Teammates
