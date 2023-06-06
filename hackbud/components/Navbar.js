@@ -8,7 +8,10 @@ export default function Navbar() {
     const [isTabSelected, setIsTabSelected] = useState('')
     const {getSession}  = api()
 
-    console.log(getSession)
+    if(getSession){
+        console.log(getSession)
+    }
+    
 
     return (
         <div>
