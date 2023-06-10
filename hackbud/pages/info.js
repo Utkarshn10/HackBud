@@ -6,6 +6,7 @@ import Link from 'next/link'
 function Info() {
     const router = useRouter()
     const { account, listD, getSession } = api()
+   
 
     return (
         <div>

@@ -1,12 +1,12 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 export default function Layout({ children }) {
     return (
-      <>
-        <Navbar />
-        <main className="flex items-center justify-center bg-white py-8">{children}</main>
-        <Footer />
-      </>
-    );
-  }
+        <div className="h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-grow flex bg-[#141D2C]">{children}</main>
+            <Footer />
+        </div>
+    )
+}

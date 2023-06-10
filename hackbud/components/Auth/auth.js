@@ -2,7 +2,7 @@ import { Account, Appwrite, Client, ID } from 'appwrite'
 import api from '../appwrite'
 import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import authContext from './authContext'
+import AuthContext from './authContext'
 
 export default function SignUp() {
     const router = useRouter()
@@ -10,16 +10,16 @@ export default function SignUp() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const { account } = api()
-    const {setIsAuthenticated} = useContext(authContext)
+    // const {setIsAuthenticated} = useContext(AuthContext)
 
     const handleSignUp = async (event) => {
         event.preventDefault()
         try {
             account.createOAuth2Session('github', 'http://localhost:3000/info')
-            setIsAuthenticated(true)
+            // setIsAuthenticated(true)
         } catch (error) {
             console.log(error)
-            setIsAuthenticated(false)
+            // setIsAuthenticated(false)
         }
     }
 

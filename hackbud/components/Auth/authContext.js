@@ -1,13 +1,15 @@
-import { createContext } from 'react'
-
-export default AuthContext = createContext()
+import { createContext, useEffect } from 'react'
+import api from '../appwrite'
+export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isAuthenticated, setIsAuthenticated] = useState(false) 
+    const { account } = api()
 
-    useEffect(() => {
-        checkLoginStatus()
-    }, [])
+    useEffect(()=>{
+        const session  = account.getSession('current')
+        console.log(session)
+    },[])
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
