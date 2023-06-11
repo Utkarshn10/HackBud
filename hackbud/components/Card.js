@@ -44,8 +44,8 @@ function Card({ index, item }) {
                     </div>
 
                     <div className="my-1 grid grid-cols-4">
-                        {item.teamSkills.map((skill) => (
-                            <div className="border rounded-2xl flex items-center justify-center border-slate-400 my-2 mx-1 text-black text-xs p-2 ">
+                        {item.teamSkills.map((skill,indexitem) => (
+                            <div key={indexitem} className="border rounded-2xl flex items-center justify-center border-slate-400 my-2 mx-1 text-black text-xs p-2 ">
                                 {skill}
                             </div>
                         ))}

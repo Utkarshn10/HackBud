@@ -55,7 +55,7 @@ function Teams() {
                 {data.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2s">
                         {data.map((item, index) => (
-                            <div className="mx-3">
+                            <div key={index} className="mx-3">
                                 <Card index={index} item={item} />
                             </div>
                         ))}
