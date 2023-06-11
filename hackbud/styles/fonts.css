@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Orkney';
-    src: url('/fonts/Orkney-regular.otf') format('opentype');
+    src: url('/fonts/Orkney-Regular.otf') format('opentype');
     /* Add additional font file formats and their paths if applicable */
     /* For example:
        src: url('/fonts/orkney-regular.ttf') format('truetype'),

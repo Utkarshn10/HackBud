@@ -14,7 +14,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      orkney: ['Orkney', 'sans-serif'],
+      orkney: ['Orkney-Regular', 'sans-serif'],
     },
   },
   plugins: [],
