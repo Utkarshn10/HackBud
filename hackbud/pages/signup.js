@@ -17,7 +17,7 @@ export default function SignUp({ setOpenRegisterModal }) {
             function (response) {
                 setLoading(false)
                 // console.log(response)
-                router.push('/')
+                router.push('/choices')
             },
             function (error) {
                 console.log(error)
