@@ -20,7 +20,7 @@ function CardNeedTeammate({ index, item }) {
     }, [])
 
     return (
-        <div className="w-full border rounded-xl border-slate-300 ">
+        <div className="w-full border rounded-xl border-slate-300 my-4">
             <div
                 className={`bg-${
                     colors[index % colors.length]
@@ -38,8 +38,8 @@ function CardNeedTeammate({ index, item }) {
                         <h3 className="text-sm font-bold font-orkney">
                             {item.name}
                         </h3>
-                        <h1 className="text-lg font-bold font-orkney">
-                            Hackathon Name
+                        <h1 className="text-sm font-light font-orkney mt-3">
+                            {item.about}
                         </h1>
                     </div>
 
@@ -53,8 +53,8 @@ function CardNeedTeammate({ index, item }) {
                 </div>
             </div>
 x
-            <h2 className="my-3 text-xs text-black mx-4 font-orkney">
-                Required teammates: 2
+            <h2 className="my-3 text-sm font-semibold text-black mx-4 font-orkney">
+                {item.country}
             </h2>
             <div className="flex flex-row">
                 <Link

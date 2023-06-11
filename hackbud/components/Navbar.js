@@ -37,7 +37,7 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className="bg-[#141D2C]">
+            <nav className="bg-[#141D2C] w-full">
                 {isAuthenticated ? (
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16">
@@ -81,16 +81,15 @@ export default function Navbar() {
                                         </Link>
                                     </div>
                                 </div>
-                               
                             </div>
                             <div className="flex justify-end items-center">
-                                    <button
-                                        onClick={() => logoutClicked()}
-                                        className="font-semibold text-black bg-white py-2 px-4 rounded-3xl"
-                                    >
-                                        Logout
-                                    </button>
-                                </div>
+                                <button
+                                    onClick={() => logoutClicked()}
+                                    className="font-semibold text-black bg-white py-2 px-4 rounded-3xl"
+                                >
+                                    Logout
+                                </button>
+                            </div>
                             <div className="-mr-2 flex md:hidden">
                                 <button
                                     onClick={() => setIsOpen(!isOpen)}
@@ -138,34 +137,29 @@ export default function Navbar() {
                         </div>
                     </div>
                 ) : (
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-                        <div className="h-16">
-                            <div className="grid grid-cols-2">
-                                <div className="flex-shrink-0 flex items-center">
-                                    <Link href="/">
-                                        <div className="text-white font-Montserrat:wght@300 font-bold text-2xl">
-                                            HackBud
-                                        </div>
-                                    </Link>
+                    <div className="flex max-w-full mx-auto px-4 sm:px-6 lg:px-8 justify-between">
+                        <div className="flex h-16 items-center ml-3">
+                            <Link href="/">
+                                <div className="text-white font-Montserrat:wght@300 font-bold text-2xl flex justify-start">
+                                    HackBud
                                 </div>
+                            </Link>
+                        </div>
+                        <div className="flex items-center">
+                            <div className="ml-10 flex items-baseline space-x-4">
+                                <Link
+                                    href="/login"
+                                    className="text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                                >
+                                    Login
+                                </Link>
 
-                                <div className="flex justify-end  items-center">
-                                    <div className="ml-10 flex items-baseline space-x-4">
-                                        <Link
-                                            href="/login"
-                                            className="text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                        >
-                                            Login
-                                        </Link>
-
-                                        <Link
-                                            href="/signup"
-                                            className="text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                        >
-                                            SignUp
-                                        </Link>
-                                    </div>
-                                </div>
+                                <Link
+                                    href="/signup"
+                                    className="text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                                >
+                                    SignUp
+                                </Link>
                             </div>
                         </div>
                     </div>
