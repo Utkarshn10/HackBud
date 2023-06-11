@@ -17,7 +17,7 @@ export default function Login() {
             function (response) {
                 console.log(response) // Success
                 setLoading(false)
-                // router.push('')
+                router.push('/')
             },
             function (error) {
                 setLoading(false)
