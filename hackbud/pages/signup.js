@@ -16,7 +16,7 @@ export default function SignUp({ setOpenRegisterModal }) {
         promise.then(
             function (response) {
                 setLoading(false)
-                console.log(response)
+                // console.log(response)
                 router.push('/')
             },
             function (error) {
@@ -31,7 +31,7 @@ export default function SignUp({ setOpenRegisterModal }) {
         promise.then(
             function (response) {
                 setLoading(false)
-                console.log(response)
+                // console.log(response)
                 createSession()
             },
             function (error) {

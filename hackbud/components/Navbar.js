@@ -16,7 +16,7 @@ export default function Navbar() {
         const promise = account.get()
         promise.then(
             function (response) {
-                console.log(response) // Success
+                // console.log(response) // Success
                 if (response.status === true) {
                     setIsAuthenticated(true)
                 }
@@ -29,7 +29,6 @@ export default function Navbar() {
     }, [account, isAuthenticated])
 
     function logoutClicked() {
-        console.log('Session deleted')
         deleteCurrentSession()
         setIsAuthenticated(false)
         router.push('/')

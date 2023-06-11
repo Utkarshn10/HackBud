@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import api from '@/components/appwrite'
 import { ID, Permission, Role } from 'appwrite'
 import Link from 'next/link'
@@ -16,6 +16,19 @@ const Form = () => {
     const [githubURL, setGithubURL] = useState('')
     const [twitterURL, setTwitterURL] = useState(null)
     const router = useRouter()
+
+    useEffect(()=>{
+        const promise = account.get()
+        promise.then(
+            function (response) {
+                //success
+            },
+            function (error) {
+                console.log('error = ', error) // Failure
+                router.push('/')
+            }
+        )
+    },[])
 
     function SubmitForm(e) {
         e.preventDefault()
@@ -38,7 +51,6 @@ const Form = () => {
         if (!githubURL) missingFields.push('GitHub URL')
         // Display toast message if any field is missing
         if (missingFields.length > 0) {
-            console.log(missingFields)
             toast.error('Please fill all in the missing fields')
             return
         }
@@ -52,7 +64,6 @@ const Form = () => {
             country,
             contact,
             github_url,
-            twitter_url,
             available,
         }
         databases
@@ -73,7 +84,7 @@ const Form = () => {
                 ]
             )
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 router.push('/teams')
             })
             .catch((error) => {
@@ -216,7 +227,7 @@ const Form = () => {
                             required
                         />
                     </div>
-                    <div className="mb-4">
+                    {/* <div className="mb-4">
                         <label
                             htmlFor="twitterURL"
                             className="block mb-2 font-medium text-gray-700 font-semibold"
@@ -230,7 +241,7 @@ const Form = () => {
                             onChange={(e) => setTwitterURL(e.target.value)}
                             className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-black"
                         />
-                    </div>
+                    </div> */}
                 </div>
                 <div className="flex justify-center w-full my-8">
                     {/* <button

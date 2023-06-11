@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import api from '@/components/appwrite'
 import { ID, Permission, Role } from 'appwrite'
 import Link from 'next/link'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useRouter } from 'next/router'
 
 const Form = () => {
     const { account, getSession, databases } = api()
@@ -16,43 +17,62 @@ const Form = () => {
     const [contactEmail, setContactEmail] = useState('')
     const [githubURL, setGithubURL] = useState('')
     const [twitterURL, setTwitterURL] = useState('')
+    const router = useRouter()
+    useEffect(() => {
+        const promise = account.get()
+        promise.then(
+            function (response) {
+                //success
+            },
+            function (error) {
+                console.log('error = ', error) // Failure
+                router.push('/')
+            }
+        )
+    }, [])
 
     function SubmitForm(e) {
         e.preventDefault()
         const userId = account.client.config.project
-        const name = 'test1'
-        const about = teamDescription
-        const available = true
-        const contact = contactEmail
-        const github_url = githubURL
-        const twitter_url = twitterURL
-        const skills = teamSkills
-        console.log(userId)
+        // const about = teamDescription
+        // const available = true
+        // const contact = contactEmail
+        // const github_url = githubURL
+        // const twitter_url = twitterURL
+        // const skills = teamSkills
+        const created_by = userId
         const data = {
             hackathonName,
             teamName,
-            name,
-            about,
-            skills,
+            teamDescription,
+            teamSkills,
+            requiredTeammates,
             country,
-            contact,
-            github_url,
-            twitter_url,
-            available,
+            contactEmail,
+            githubURL,
+            created_by,
         }
+
+
         databases
-            .createDocument(ID.unique(), data, [
-                (Permission.read(Role.any()),
-                // Permission.update(Role.team("writers")),
-                Permission.write(Role.any())),
-                // Permission.delete(Role.team("writers")),
-                // Permission.delete(Role.team("writers")),
-                // Permission.update(Role.user(userId)),
-                // Permission.write(Role.user(userId)),
-                // Permission.delete(Role.user(userId))
-            ])
+            .createDocument(
+                process.env.NEXT_PUBLIC_DB_ID,
+                process.env.NEXT_PUBLIC_Collection_ID,
+                ID.unique(),
+                data,
+                [
+                    (Permission.read(Role.any()),
+                    // Permission.update(Role.team("writers")),
+                    Permission.write(Role.any())),
+                    // Permission.delete(Role.team("writers")),
+                    // Permission.delete(Role.team("writers")),
+                    // Permission.update(Role.user(userId)),
+                    // Permission.write(Role.user(userId)),
+                    // Permission.delete(Role.user(userId))
+                ]
+            )
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 router.push('/teammates')
             })
             .catch((error) => {
@@ -60,17 +80,17 @@ const Form = () => {
             })
     }
 
-    function ResetForm() {
-        setHackathonName('')
-        setTeamName('')
-        setTeamDescription('')
-        setTeamSkills([])
-        setRequiredTeammates(0)
-        setCountry('')
-        setContactEmail('')
-        setGithubURL('')
-        setTwitterURL('')
-    }
+    // function ResetForm() {
+    //     setHackathonName('')
+    //     setTeamName('')
+    //     setTeamDescription('')
+    //     setTeamSkills([])
+    //     setRequiredTeammates(0)
+    //     setCountry('')
+    //     setContactEmail('')
+    //     setGithubURL('')
+    //     setTwitterURL('')
+    // }
 
     return (
         <div className="w-full">
@@ -92,7 +112,7 @@ const Form = () => {
                 </div>
             </nav>
             <form className="flex items-center justify-center bg-white w-full min-h-screen py-2 flex-col mb-8">
-            <h1 className="text-3xl font-bold text-center text-black mt-6 mb-10">
+                <h1 className="text-3xl font-bold text-center text-black mt-6 mb-10">
                     Find a HackBud
                 </h1>
                 <div className="grid grid-cols-2 gap-4">
@@ -157,7 +177,7 @@ const Form = () => {
                             onChange={(e) =>
                                 setTeamSkills(e.target.value.split(','))
                             }
-                            placeholder='Next.js, TailwindCSS, Figma'
+                            placeholder="Next.js, TailwindCSS, Figma"
                             className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-black"
                             required
                         />

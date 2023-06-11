@@ -15,7 +15,7 @@ export default function Login() {
 
         promise.then(
             function (response) {
-                console.log(response) // Success
+                // console.log(response) // Success
                 setLoading(false)
                 router.push('/')
             },
