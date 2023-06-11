@@ -16,19 +16,19 @@ const api = () => {
         return account.deleteSession('current')
     }
 
-    const listDocuments = (databaseId, collectionId) => {
-        return databases.listDocuments(
-            '6472e9626de7a4f0ed84',
-            '6472e99701633339b475'
-        )
-    }
+    // const listDocuments = (databaseId, collectionId) => {
+    //     return databases.listDocuments(
+    //         '6472e9626de7a4f0ed84',
+    //         '6472e99701633339b475'
+    //     )
+    // }
 
     return {
         appwrite,
         account,
         databases,
         getSession,
-        listDocuments,
+        // listDocuments,
         deleteCurrentSession,
     }
 }

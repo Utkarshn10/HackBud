@@ -33,15 +33,18 @@ function Card({ index, item }) {
 
                     <div className="my-4 text-black">
                         <h3 className="text-sm font-bold font-orkney">
-                            {item.name}
+                            {item.teamName}
                         </h3>
                         <h1 className="text-lg font-bold font-orkney">
-                            Hackathon Name
+                            {item.hackathonName}
+                        </h1>
+                        <h1 className="text-sm font-light font-orkney mt-3">
+                            {item.teamDescription}
                         </h1>
                     </div>
 
                     <div className="my-1 grid grid-cols-4">
-                        {item.skills.map((skill) => (
+                        {item.teamSkills.map((skill) => (
                             <div className="border rounded-2xl flex items-center justify-center border-slate-400 my-2 mx-1 text-black text-xs p-2 ">
                                 {skill}
                             </div>
@@ -51,24 +54,24 @@ function Card({ index, item }) {
             </div>
 
             <h2 className="my-3 text-xs text-black mx-4 font-orkney">
-                Required teammates: 2
+                Required teammates: {item.requiredTeammates}
             </h2>
             <div className="flex flex-row">
                 <Link
                     className="flex my-3 text-md items-center justify-center text-black mx-4 hover:underline underline-offset-4"
-                    href={item.github_url}
+                    href={item.githubURL}
                 >
                     <AiFillGithub className="text-md" />
                     <h2 className="pl-1">Github</h2>
                 </Link>
                 <Link
                     className="flex my-3 text-md items-center justify-center text-black mx-4  hover:underline underline-offset-4"
-                    href={item.contact}
+                    href={item.contactEmail}
                 >
                     <AiOutlineMail className="text-md" />
                     <h2 className="pl-1 font-orkney">Email</h2>
                 </Link>
-                {item.twitter_url != null && (
+                {/* {item.twitterUrl != null && (
                     <Link
                         className="flex my-3 text-md items-center justify-center text-black mx-4 hover:underline underline-offset-4"
                         href={item.twitter_url}
@@ -76,7 +79,7 @@ function Card({ index, item }) {
                         <AiOutlineTwitter className="text-md" />
                         <h2 className="pl-1">Twitter</h2>
                     </Link>
-                )}
+                )} */}
             </div>
         </div>
     )

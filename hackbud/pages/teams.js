@@ -2,47 +2,69 @@ import React, { useEffect, useState } from 'react'
 import api from '@/components/appwrite'
 import { ID, Permission, Role } from 'appwrite'
 import Card from '@/components/Card'
+import { useRouter } from 'next/router'
+import Navbar from '@/components/Navbar'
 
 function Teams() {
-    const { account, getSession, databases } = api()
+    const { account, getSession, databases, deleteCurrentSession } = api()
     const [data, setData] = useState([])
+    const router = useRouter()
 
-    useEffect(() => {
-        const promise = databases.listDocuments(
-            process.env.NEXT_PUBLIC_DB_ID,
-            process.env.NEXT_PUBLIC_Collection_need_team_ID
-        )
-
+    const checkAuth = async () => {
+        const promise = account.get()
         promise.then(
             function (response) {
-                console.log(response) // Success
-                setData(response.documents)
+                return true
             },
             function (error) {
-                console.log(error) // Failure
+                console.log('error = ', error) // Failure
+                router.push('/')
+                return false
             }
         )
-    }, [])
+    }
 
     useEffect(() => {
-        data.map((item) => {
-            console.log(item)
-        })
-    })
+        if (checkAuth()) {
+            const promise = databases.listDocuments(
+                process.env.NEXT_PUBLIC_DB_ID,
+                process.env.NEXT_PUBLIC_Collection_ID
+            )
+
+            promise.then(
+                function (response) {
+                    // console.log(response) // Success
+                    setData(response.documents)
+                },
+                function (error) {
+                    console.log(error) // Failure
+                }
+            )
+        }
+    }, [])
+
     return (
-        <div className=' bg-white'>
-            <div className='flex text-left'>
-                <h1 className="text-3xl font-orkney font-bold mb-4 text-black  ml-3">
-                    Recommended Teams
-                </h1>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2">
-                {data.length > 0 &&
-                    data.map((item, index) => (
-                        <div className="mx-3">
-                            <Card index={index} item={item} />
-                        </div>
-                    ))}
+        <div className="w-full">
+            <Navbar />
+            <div className="flex items-center bg-white w-full min-h-screen py-2 flex-col">
+                <div className="flex text-left my-5">
+                    <h1 className="text-4xl font-orkney font-bold mb-4 text-black ml-3">
+                        Recommended Teams
+                    </h1>
+                </div>
+                {data.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2s">
+                        {data.map((item, index) => (
+                            <div className="mx-3">
+                                <Card index={index} item={item} />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="font-bold text-slate-500 flex items-center py-2 ">
+                        No Data available
+                    </div>
+                )}
             </div>
         </div>
     )
