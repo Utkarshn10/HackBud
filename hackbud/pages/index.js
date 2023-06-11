@@ -7,18 +7,6 @@ import { AuthProvider } from '@/components/Auth/authContext'
 export default function Home() {
     const { account } = api()
 
-    // useEffect(()=>{
-    //     const promise = account.get('current')
-
-    //     promise.then(
-    //         function (response) {
-    //             console.log(response) // Success
-    //         },
-    //         function (error) {
-    //             console.log('error = ', error) // Failure
-    //         }
-    //     )
-    // },[])
   
     return (
         <main>

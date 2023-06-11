@@ -26,10 +26,10 @@ export default function Navbar() {
                 setIsAuthenticated(false)
             }
         )
-    }, [account,isAuthenticated])
+    }, [account, isAuthenticated])
 
-    function logoutClicked(){
-        console.log("Session deleted")
+    function logoutClicked() {
+        console.log('Session deleted')
         deleteCurrentSession()
         setIsAuthenticated(false)
         router.push('/')
@@ -81,15 +81,16 @@ export default function Navbar() {
                                         </Link>
                                     </div>
                                 </div>
+                               
                             </div>
                             <div className="flex justify-end items-center">
-                                <button
-                                    onClick={()=>logoutClicked()}
-                                    className="font-semibold text-white"
-                                >
-                                    Logout
-                                </button>
-                            </div>
+                                    <button
+                                        onClick={() => logoutClicked()}
+                                        className="font-semibold text-black bg-white py-2 px-4 rounded-3xl"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
                             <div className="-mr-2 flex md:hidden">
                                 <button
                                     onClick={() => setIsOpen(!isOpen)}
@@ -166,7 +167,6 @@ export default function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                         
                         </div>
                     </div>
                 )}
@@ -200,6 +200,12 @@ export default function Navbar() {
                                     >
                                         Find Teammates
                                     </Link>
+                                    <button
+                                        onClick={() => logoutClicked()}
+                                        className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-semibold"
+                                    >
+                                        Logout
+                                    </button>
                                 </div>
                             ) : (
                                 <div
