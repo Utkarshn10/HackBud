@@ -52,7 +52,6 @@ function CardNeedTeammate({ index, item }) {
                     </div>
                 </div>
             </div>
-x
             <h2 className="my-3 text-sm font-semibold text-black mx-4 font-orkney">
                 {item.country}
             </h2>

@@ -155,8 +155,7 @@ export default function Navbar() {
 
                                 <Link
                                     href="/signup"
-                                    className="text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                >
+                                    className="text-black rounded-3xl bg-white text-md  px-4 py-2">
                                     SignUp
                                 </Link>
                             </div>
