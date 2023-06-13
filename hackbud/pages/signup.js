@@ -3,6 +3,8 @@ import { MdOutlineCancel } from 'react-icons/md'
 import { useRouter } from 'next/router'
 import { ID } from 'appwrite'
 import api from '@/components/appwrite'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function SignUp({ setOpenRegisterModal }) {
     const [email, setEmail] = useState('')
@@ -21,6 +23,7 @@ export default function SignUp({ setOpenRegisterModal }) {
             },
             function (error) {
                 console.log(error)
+                toast.error("",error)
                 setLoading(false)
             }
         )
@@ -92,6 +95,7 @@ export default function SignUp({ setOpenRegisterModal }) {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     )
 }

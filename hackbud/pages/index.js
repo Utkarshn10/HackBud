@@ -18,40 +18,41 @@ export default function Home() {
                 
 
                 <div className="lg:overflow-hidden flex flex-col md:flex-row mx-auto mb-auto items-center justify-center md:py-16">
-                    <div className="max-w-7xl font-Montserrat:wght@300 text-center sm:text-left mx-6 ">
+                    <div className="max-w-7xl font-Montserrat:wght@300 text-center sm:text-left mx-2">
                         <h1 className="relative flex flex-col px-4 items-center mt-8 md:mt-4 ">
-                            <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight my-2 md:my-4">
-                                <span className="inline-block bg-gradient-to-r from-[#F9D307] to-[#FCA50A] bg-clip-text text-transparent">
+                            <h1 className="text-4xl md:text-7xl my-2 md:my-4">
+                                <span className="inline-block font-extrabold tracking-tight bg-gradient-to-r from-[#F9D307] to-[#FCA50A] bg-clip-text text-transparent">
                                     Unlock
                                 </span>{' '}
                                 <br />
-                                <span className="inline-block  bg-gradient-to-r from-[#FCA50A] to-[#FF8205] bg-clip-text text-transparent">
+                                <span className="inline-block font-extrabold tracking-tight bg-gradient-to-r from-[#FCA50A] to-[#FF8205] bg-clip-text text-transparent">
                                     your
                                 </span>{' '}
                                 <br />
-                                <span className="inline-block text-[#F9D307]">
+                                <span className="inline-block font-extrabold tracking-tight text-[#F9D307]">
                                     potential
                                 </span>
-                            </h1>
-                            <p className="text-base lg:text-2xl font-bold mt-2 md:mt-3 flex justify-center text-center relative text-gray-300 items-center">
+                                <p className="text-base lg:text-2xl font-bold mt-4 md:mt-6  text-gray-300 ">
                                 in the world of hackathons and innovation
                             </p>
-                        </h1>
-                        <Link
+                            <Link
                             href="/signup"
-                            className="flex mt-8 mx-auto w-1/2 justify-center items-center rounded-xl p-4 font-lato text-[#332A36] bg-white text-lg font-medium"
+                            className="flex mt-8 w-1/2 items-center rounded-xl p-4 justify-center font-lato text-[#332A36] bg-white text-lg font-medium"
                         >
                             Get Started
                             <div className="pl-3">
                                 <BsArrowRightCircle />
                             </div>
                         </Link>
+                            </h1>
+                          
+                        </h1>
                     </div>
-                    <div className="my-10 md:my-0  ">
+                    <div className="md:my-0 md:mr-7">
                         <Image
-                            src="/main-bg2.png"
+                            src="/home-bg.png"
                             height={1000}
-                            width={700}
+                            width={800}
                             className="rounded-3xl mx-auto shadow-xl"
                         />
                     </div>
