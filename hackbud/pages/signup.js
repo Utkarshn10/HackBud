@@ -17,7 +17,7 @@ export default function SignUp({ setOpenRegisterModal }) {
             function (response) {
                 setLoading(false)
                 // console.log(response)
-                router.push('/')
+                router.push('/choices')
             },
             function (error) {
                 console.log(error)
@@ -84,7 +84,7 @@ export default function SignUp({ setOpenRegisterModal }) {
 
                         <button
                             type="button"
-                            className="py-2 rounded-lg w-full bg-gray-400 text-lg text-white font-semibold hover:bg-gray-700 hover:text-white p-2 px-4"
+                            className="py-2 rounded-lg w-full bg-gray-500 text-lg text-white font-semibold hover:bg-gray-700 hover:text-white p-2 px-4"
                             onClick={handleLogin}
                         >
                             {loading ? 'Loading...' : 'Sign Up'}

@@ -3,6 +3,9 @@ import { MdOutlineCancel } from 'react-icons/md'
 import { useRouter } from 'next/router'
 import { ID } from 'appwrite'
 import api from '@/components/appwrite'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -21,7 +24,8 @@ export default function Login() {
             },
             function (error) {
                 setLoading(false)
-                console.log(error) // Failure
+                toast.error('Invalid email or password')
+                // console.log(error) // Failure
             }
         )
     }
@@ -69,7 +73,7 @@ export default function Login() {
 
                         <button
                             type="button"
-                            className="py-2 rounded-lg w-full bg-gray-400 text-lg text-white font-semibold hover:bg-gray-700 hover:text-white p-2 px-4"
+                            className="py-2 rounded-lg w-full bg-gray-500 text-lg text-white font-semibold hover:bg-gray-700 hover:text-white p-2 px-4"
                             onClick={handleLogin}
                         >
                             {loading ? 'Loading...' : 'Sign In'}
@@ -85,6 +89,7 @@ export default function Login() {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     )
 }
