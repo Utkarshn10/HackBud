@@ -3,3 +3,5 @@
 Are you a passionate hacker looking to participate in thrilling hackathons but struggling to find the ideal teammate or team?
 
 Look no further! I am excited to present HackBud, a groundbreaking web app that I have developed to connect like-minded individuals and facilitate collaboration in the hackathon community. HackBud is built as a part of Appwrite and Hashnode Hackathon. Therefore I call it "An app built for Hackathon in a Hackathon 🚀".
+
+![image](https://github.com/Utkarshn10/HackBud/assets/58587256/16d5898e-6ea0-4b4c-a00e-bcbb1b601f0d)
