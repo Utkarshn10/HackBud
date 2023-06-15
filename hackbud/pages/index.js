@@ -22,18 +22,21 @@ export default function Home() {
                         <h1 className="relative flex flex-col px-4 items-center mt-8 md:mt-4 ">
                             <h1 className="text-4xl md:text-7xl my-2 md:my-4">
                                 <span className="inline-block font-extrabold tracking-tight bg-gradient-to-r from-[#F9D307] to-[#FCA50A] bg-clip-text text-transparent">
-                                    Unlock
+                                Unleash 
                                 </span>{' '}
                                 <br />
                                 <span className="inline-block font-extrabold tracking-tight bg-gradient-to-r from-[#FCA50A] to-[#FF8205] bg-clip-text text-transparent">
-                                    your
+                                Your 
+                                </span>{' '}
+                                <span className="inline-block font-extrabold tracking-tight bg-gradient-to-r from-[#FCA50A] to-[#FF8205] bg-clip-text text-transparent">
+                                Hackathon 
                                 </span>{' '}
                                 <br />
                                 <span className="inline-block font-extrabold tracking-tight text-[#F9D307]">
-                                    potential
+                                Potential
                                 </span>
                                 <p className="text-base lg:text-2xl font-bold mt-4 md:mt-6  text-gray-300 ">
-                                in the world of hackathons and innovation
+                                Empowering Collaboration in Hackathons
                             </p>
                             <Link
                             href="/signup"
