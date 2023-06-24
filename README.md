@@ -10,7 +10,7 @@ Look no further! I am excited to present HackBud, a groundbreaking web app that 
 
 - **Thank you** for considering to contribute 
 - Feel free to submit feature requests, UI updates, bugs as issues.
-- Checkout [Contribution Guidelines](https://github.com/Utkarshn10/HackBud/blob/master/CONTRIBUTING.md) for more information.
+- Checkout [Contribution Guidelines](https://github.com/Utkarshn10/HackBud/blob/master/Contributing.md) for more information.
 - Have a feature request? Feel free to create a issue for it.
 
 ## Installation
