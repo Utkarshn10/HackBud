@@ -6,6 +6,13 @@ Look no further! I am excited to present HackBud, a groundbreaking web app that 
 
 ![image](https://github.com/Utkarshn10/HackBud/assets/58587256/16d5898e-6ea0-4b4c-a00e-bcbb1b601f0d)
 
+## Contributing
+
+- **Thank you** for considering to contribute 
+- Feel free to submit feature requests, UI updates, bugs as issues.
+- Checkout [Contribution Guidelines](https://github.com/Utkarshn10/HackBud/blob/master/CONTRIBUTING.md) for more information.
+- Have a feature request? Feel free to create a issue for it.
+
 ## Installation
 
 1. Fork the repository
