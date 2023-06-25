@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar'
 function Teams() {
     const { account, getSession, databases, deleteCurrentSession } = api()
     const [data, setData] = useState([])
+    const [loading,setLoading] = useState(false)
     const router = useRouter()
 
     const checkAuth = async () => {
@@ -25,6 +26,7 @@ function Teams() {
     }
 
     useEffect(() => {
+        setLoading(true)
         if (checkAuth()) {
             const promise = databases.listDocuments(
                 process.env.NEXT_PUBLIC_DB_ID,
@@ -35,6 +37,7 @@ function Teams() {
                 function (response) {
                     // console.log(response) // Success
                     setData(response.documents)
+                    setLoading(false)
                 },
                 function (error) {
                     console.log(error) // Failure
@@ -46,6 +49,7 @@ function Teams() {
     return (
         <div className="w-full">
             <Navbar />
+            {loading ? <div class="flex h-8 w-8 absolute"><span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-gray-200 opacity-75"></span><span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-gray-200"></span></div>:
             <div className="flex items-center bg-white w-full min-h-screen py-2 flex-col">
                 <div className="flex text-left my-5">
                     <h1 className="text-4xl font-orkney font-bold mb-4 text-black ml-3">
@@ -65,7 +69,7 @@ function Teams() {
                         No Data available
                     </div>
                 )}
-            </div>
+            </div>}
         </div>
     )
 }

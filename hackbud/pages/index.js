@@ -38,20 +38,22 @@ export default function Home() {
                                 <p className="text-base lg:text-2xl font-bold mt-4 md:mt-6  text-gray-300 ">
                                 Empowering Collaboration in Hackathons
                             </p>
+                            <div className='flex items-center justify-center md:justify-start'>
                             <Link
                             href="/signup"
-                            className="flex mt-8 w-1/2 items-center rounded-xl p-4 justify-center font-lato text-[#332A36] bg-white text-lg font-medium"
+                            className="flex mt-8 w-1/2 mb-4 md:mb-0 items-center rounded-xl p-4 justify-center font-lato text-[#332A36] bg-white text-sm md:text-lg font-medium"
                         >
                             Get Started
                             <div className="pl-3">
                                 <BsArrowRightCircle />
                             </div>
                         </Link>
+                        </div>
                             </h1>
                           
                         </h1>
                     </div>
-                    <div className="md:my-0 md:mr-7">
+                    <div className="mx-5 md:my-0 md:mr-7 md:mx-0">
                         <Image
                             src="/home-bg.png"
                             height={1000}
