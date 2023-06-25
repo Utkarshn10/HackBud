@@ -20,9 +20,9 @@ function Card({ index, item }) {
     }, [])
 
     return (
-        <div className="w-full border rounded-xl border-slate-300 ">
+        <div className="w-full border rounded-3xl border-slate-300 ">
             <div
-                className={`bg-${colors[index % colors.length]} rounded-xl m-1`}
+                className={`bg-${colors[index % colors.length]} rounded-3xl m-1`}
                 style={{ backgroundColor: colors[index % colors.length] }}
             >
                 <div className="mx-3 py-1">

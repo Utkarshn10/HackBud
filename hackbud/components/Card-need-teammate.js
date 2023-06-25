@@ -20,11 +20,11 @@ function CardNeedTeammate({ index, item }) {
     }, [])
 
     return (
-        <div className="w-full border rounded-xl border-slate-300 my-4">
+        <div className="w-full border rounded-3xl border-slate-300 my-4">
             <div
                 className={`bg-${
                     colors[index % colors.length]
-                } rounded-xl m-1.5`}
+                } rounded-3xl m-1.5`}
                 style={{ backgroundColor: colors[index % colors.length] }}
             >
                 <div
