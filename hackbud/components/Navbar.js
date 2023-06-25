@@ -81,13 +81,15 @@ export default function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex justify-end items-center">
-                                <button
-                                    onClick={() => logoutClicked()}
-                                    className="font-semibold text-black bg-white py-2 px-4 rounded-3xl"
-                                >
-                                    Logout
-                                </button>
+                            <div className="hidden md:block">
+                                <div className="flex justify-end items-center">
+                                    <button
+                                        onClick={() => logoutClicked()}
+                                        className="font-semibold text-black bg-white py-2 px-4 rounded-3xl"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
                             </div>
                             <div className="-mr-2 flex md:hidden">
                                 <button
@@ -155,7 +157,8 @@ export default function Navbar() {
 
                                 <Link
                                     href="/signup"
-                                    className="text-black rounded-3xl bg-white text-md  px-4 py-2">
+                                    className="text-black rounded-3xl bg-white text-md  px-4 py-2"
+                                >
                                     SignUp
                                 </Link>
                             </div>

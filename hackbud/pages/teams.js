@@ -8,7 +8,7 @@ import Navbar from '@/components/Navbar'
 function Teams() {
     const { account, getSession, databases, deleteCurrentSession } = api()
     const [data, setData] = useState([])
-    const [loading,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
     const checkAuth = async () => {
@@ -49,27 +49,35 @@ function Teams() {
     return (
         <div className="w-full">
             <Navbar />
-            {loading ? <div class="flex h-8 w-8 absolute"><span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-gray-200 opacity-75"></span><span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-gray-200"></span></div>:
-            <div className="flex items-center bg-white w-full min-h-screen py-2 flex-col">
-                <div className="flex text-left my-5">
-                    <h1 className="text-4xl font-orkney font-bold mb-4 text-black ml-3">
-                        Recommended Teams
-                    </h1>
+            {loading ? (
+                <div className="flex items-center justify-center h-screen bg-white">
+                    <div class="flex h-8 w-8 absolute">
+                        <span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-slate-600 opacity-75"></span>
+                        <span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-slate-600"></span>
+                    </div>
                 </div>
-                {data.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2s">
-                        {data.map((item, index) => (
-                            <div key={index} className="mx-3">
-                                <Card index={index} item={item} />
-                            </div>
-                        ))}
+            ) : (
+                <div className="flex items-center bg-white w-full min-h-screen py-2 flex-col">
+                    <div className="flex text-center md:text-left my-5">
+                        <h1 className="text-4xl font-orkney font-bold mb-4 text-black ml-3">
+                            Recommended Teams
+                        </h1>
                     </div>
-                ) : (
-                    <div className="font-bold text-slate-500 flex items-center py-2 ">
-                        No Data available
-                    </div>
-                )}
-            </div>}
+                    {data.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2s">
+                            {data.map((item, index) => (
+                                <div key={index} className="mx-3">
+                                    <Card index={index} item={item} />
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="font-bold text-slate-500 flex items-center py-2 ">
+                            No Data available
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     )
 }

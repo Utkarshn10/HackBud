@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 function Teammates() {
     const { account, getSession, databases } = api()
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
     const checkAuth = async () => {
@@ -25,6 +26,7 @@ function Teammates() {
     }
 
     useEffect(() => {
+        setLoading(true)
         if (checkAuth()) {
             const promise = databases.listDocuments(
                 process.env.NEXT_PUBLIC_DB_ID,
@@ -35,6 +37,7 @@ function Teammates() {
                 function (response) {
                     // console.log(response) // Success
                     setData(response.documents)
+                    setLoading(false)
                 },
                 function (error) {
                     console.log(error) // Failure
@@ -46,21 +49,33 @@ function Teammates() {
     return (
         <div className="w-full">
             <Navbar />
-            <div className="flex items-center bg-white w-full min-h-screen py-2 flex-col">
-                <div className="flex text-left my-5">
-                    <h1 className="text-4xl font-orkney font-bold mb-4 text-black ml-3">
-                        Recommended Teammates
-                    </h1>
+            {loading ? (
+                <div className="flex items-center justify-center h-screen bg-white">
+                    <div class="flex h-8 w-8 absolute">
+                        <span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-slate-600 opacity-75"></span>
+                        <span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-slate-600"></span>
+                    </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2 bg-white">
-                    {data.length > 0 &&
-                        data.map((item, index) => (
-                            <div key={index} className="mx-3">
-                                <CardNeedTeammate index={index} item={item} />
-                            </div>
-                        ))}
+            ) : (
+                <div className="flex items-center bg-white w-full min-h-screen py-2 flex-col">
+                    <div className="flex text-center md:text-left my-5">
+                        <h1 className="text-4xl font-orkney font-bold mb-4 text-black ml-3">
+                            Recommended Teammates
+                        </h1>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2 bg-white">
+                        {data.length > 0 &&
+                            data.map((item, index) => (
+                                <div key={index} className="mx-3">
+                                    <CardNeedTeammate
+                                        index={index}
+                                        item={item}
+                                    />
+                                </div>
+                            ))}
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     )
 }
