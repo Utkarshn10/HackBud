@@ -52,7 +52,7 @@ function CardNeedTeammate({ index, item }) {
                     </div>
                 </div>
             </div>
-            <h2 className="my-3 text-sm font-semibold text-black mx-4 font-orkney">
+            <h2 className="mt-3 text-sm font-semibold text-black mx-4 font-orkney">
                 {item.country}
             </h2>
             <div className="flex flex-row">

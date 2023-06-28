@@ -53,7 +53,7 @@ function Card({ index, item }) {
                 </div>
             </div>
 
-            <h2 className="my-3 text-xs text-black mx-4 font-orkney">
+            <h2 className="mt-3 text-xs text-black mx-4 font-orkney">
                 Required teammates: {item.requiredTeammates}
             </h2>
             <div className="flex flex-row">
