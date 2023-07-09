@@ -32,7 +32,7 @@ export default function Login() {
 
     return (
          <div className=" bg-[#141D2C] flex justify-center items-center w-full">
-            <div className="bg-submain md:w-2/5 w-2/3 p-6 rounded-md">
+            <div className="bg-submain w-full md:w-2/5  p-6 rounded-md">
                 <div className="m-4">
                     {/* Cancel icon */}
                     <button
