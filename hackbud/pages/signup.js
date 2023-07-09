@@ -46,7 +46,7 @@ export default function SignUp({ setOpenRegisterModal }) {
 
     return (
         <div className=" bg-[#141D2C] flex justify-center items-center w-full">
-            <div className="bg-submain md:w-2/5 w-2/3 p-6 rounded-md">
+            <div className="bg-submain w-full md:w-2/5 p-6 rounded-md">
                 <div className="m-4">
                     {/* Cancel icon */}
                     <button
@@ -56,12 +56,12 @@ export default function SignUp({ setOpenRegisterModal }) {
                     >
                         <MdOutlineCancel className="h-6 w-6 text-gray-500" />
                     </button>
-                    <h1 className="mt-3 mb-8 text-gray-400  font-Montserrat:wght@300 font-bold text-6xl">
+                    <h1 className="mt-3 mb-8 text-gray-400  font-Montserrat:wght@300 font-bold text-5xl md:text-6xl">
                         Sign Up
                     </h1>
 
                     <div className="flex flex-col text-gray-200  font-lato mx-auto h-auto">
-                        <h1 className="my-2 font-semibold text-lg ">Email</h1>
+                        <h1 className="my-2 font-semibold text-base md:text-lg ">Email</h1>
                         <input
                             id="email"
                             placeholder="Type in your email address"
@@ -73,7 +73,7 @@ export default function SignUp({ setOpenRegisterModal }) {
 
                         <label
                             htmlFor="password"
-                            className="block font-semibold mb-1 text-lg"
+                            className="block font-semibold mb-1 text-base md:text-lg"
                         >
                            Password
                         </label>
