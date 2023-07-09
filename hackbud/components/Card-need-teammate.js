@@ -65,7 +65,7 @@ function CardNeedTeammate({ index, item }) {
                 </Link>
                 <Link
                     className="flex my-3 text-md items-center justify-center text-black mx-4  hover:underline underline-offset-4"
-                    href={item.contact}
+                    href={`mailto: ${item.contact}`}
                 >
                     <AiOutlineMail className="text-md" />
                     <h2 className="pl-1 font-orkney">Email</h2>
