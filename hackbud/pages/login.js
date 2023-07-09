@@ -42,17 +42,17 @@ export default function Login() {
                     >
                         <MdOutlineCancel className="h-6 w-6 text-gray-500" />
                     </button>
-                    <h1 className="mt-3 mb-8 main-font font-Montserrat:wght@300 font-bold text-6xl">
+                    <h1 className="mt-3 mb-8 text-gray-400 font-Montserrat:wght@300 font-bold text-6xl">
                         Sign in
                     </h1>
 
-                    <div className="flex flex-col submain-font font-lato mx-auto h-auto">
+                    <div className="flex flex-col text-gray-200 font-lato mx-auto h-auto">
                         <h1 className="my-2 font-semibold text-lg ">Email</h1>
                         <input
                             id="email"
                             placeholder="Type in your email address"
                             type="text"
-                            className="w-full border border-gray-300 text-black rounded-md py-2 px-3 mt-2 mb-6"
+                            className="w-full border border-gray-200 text-black rounded-md py-2 px-3 mt-2 mb-6"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
