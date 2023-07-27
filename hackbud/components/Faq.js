@@ -40,8 +40,8 @@ export default function Faq() {
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                {data.map((item) => (
-                    <FaqCard question={item[0]} answer={item[1]} />
+                {data.map((item,index) => (
+                    <FaqCard key={index} question={item[0]} answer={item[1]} />
                 ))}
             </div>
         </>
