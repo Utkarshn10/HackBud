@@ -4,8 +4,8 @@ export default function Header() {
     return (
         <div className='mt-12'>
             {' '}
-            <div className="flex justify-center items-center">
-                <div className="text-4xl md:text-8xl font-bold text-white">
+            <div className="flex justify-center items-center text-center px-4">
+                <div className="text-3xl md:text-8xl font-bold text-white">
                     Unleash Your Hackathon{' '}
                     <p className="flex justify-center mt-2">
                         Success with HackBud
