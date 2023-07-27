@@ -157,7 +157,7 @@ export default function Navbar() {
 
                                 <Link
                                     href="/signup"
-                                    className="text-black rounded-3xl bg-white text-md  px-4 py-2"
+                                    className="text-white rounded-3xl  border-2 border-white text-md  px-4 py-2"
                                 >
                                     SignUp
                                 </Link>
