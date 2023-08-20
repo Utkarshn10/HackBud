@@ -48,7 +48,6 @@ function Teammates() {
 
     return (
         <div className="w-full">
-            <Navbar />
             {loading ? (
                 <div className="flex items-center justify-center h-screen bg-white">
                     <div class="flex h-8 w-8 absolute">

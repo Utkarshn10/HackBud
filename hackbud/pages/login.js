@@ -5,6 +5,7 @@ import { ID } from 'appwrite'
 import api from '@/components/appwrite'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { AiFillGithub } from 'react-icons/ai'
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -13,8 +14,8 @@ export default function Login() {
     const router = useRouter()
     const { account } = api()
 
-    const handleLogin =  () => {
-        const promise =  account.createEmailSession(email, password)
+    const handleLogin = () => {
+        const promise = account.createEmailSession(email, password)
 
         promise.then(
             function (response) {
@@ -30,8 +31,12 @@ export default function Login() {
         )
     }
 
+    const handleGitHubLogin = () => {
+        account.createOAuth2Session('github',"https://hack-bud.vercel.app/")
+    }
+
     return (
-         <div className=" bg-[#141D2C] flex justify-center items-center w-full">
+        <div className=" bg-[#141D2C] flex justify-center items-center w-full">
             <div className="bg-submain w-full md:w-2/5  p-6 rounded-md">
                 <div className="m-4">
                     {/* Cancel icon */}
@@ -45,6 +50,12 @@ export default function Login() {
                     <h1 className="mt-3 mb-8 text-gray-400 font-Montserrat:wght@300 font-bold text-6xl">
                         Sign in
                     </h1>
+
+                    <div className="flex justify-center bg-gray-500 rounded-lg font-lato py-2 px-3 text-white my-2">
+                        <button className="flex items-center text-lg" onClick={() => handleGitHubLogin()}>
+                            <AiFillGithub className='text-3xl mr-2'/> <p>Continue with GitHub</p>
+                        </button>
+                    </div>
 
                     <div className="flex flex-col text-gray-200 font-lato mx-auto h-auto">
                         <h1 className="my-2 font-semibold text-lg ">Email</h1>

@@ -52,17 +52,45 @@ export default function Navbar() {
                                 <div className="hidden md:block">
                                     <div className="ml-10 flex items-baseline space-x-4">
                                         <Link
+                                            href="/need-teammate-form"
+                                            onClick={() =>
+                                                setIsTabSelected('team-form')
+                                            }
+                                            className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
+                                                isTabSelected == 'team-form'
+                                                    ? 'underline underline-offset-8'
+                                                    : ''
+                                            }`}
+                                        >
+                                            Create Team
+                                        </Link>
+                                        <Link
+                                            href="/team-form"
+                                            onClick={() =>
+                                                setIsTabSelected(
+                                                    'teammate-form'
+                                                )
+                                            }
+                                            className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
+                                                isTabSelected == 'teammate-form'
+                                                    ? 'underline underline-offset-8'
+                                                    : ''
+                                            }`}
+                                        >
+                                            Join a Team
+                                        </Link>
+                                        <Link
                                             href="/teams"
                                             onClick={() =>
                                                 setIsTabSelected('teams')
                                             }
                                             className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
-                                                isTabSelected === 'teams'
+                                                isTabSelected == 'teams'
                                                     ? 'underline underline-offset-8'
                                                     : ''
                                             }`}
                                         >
-                                            Find Teams
+                                            Explore Teams
                                         </Link>
 
                                         <Link
@@ -71,7 +99,7 @@ export default function Navbar() {
                                                 setIsTabSelected('teammates')
                                             }
                                             className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
-                                                isTabSelected === 'teammates'
+                                                isTabSelected == 'teammates'
                                                     ? 'underline underline-offset-8'
                                                     : ''
                                             }`}
@@ -183,10 +211,22 @@ export default function Navbar() {
                                     className="px-2 pt-2 pb-3 space-y-1 sm:px-3"
                                 >
                                     <Link
+                                        href="/need-teammate-form"
+                                        className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+                                    >
+                                        Create Team
+                                    </Link>
+                                    <Link
+                                        href="/team-form"
+                                        className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+                                    >
+                                        Join a Team
+                                    </Link>
+                                    <Link
                                         href="/teams"
                                         className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                                     >
-                                        Find Teams
+                                        Explore Teams
                                     </Link>
 
                                     <Link

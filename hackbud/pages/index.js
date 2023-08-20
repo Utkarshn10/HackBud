@@ -16,7 +16,6 @@ export default function Home() {
                 <title>HackBud</title>
             </Head>
             <div className="w-full">
-                <Navbar />
                 <Header />
                 <Faq />
             </div>

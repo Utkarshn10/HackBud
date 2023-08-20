@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router';
+import Navbar from '@/components/Navbar'
 
 const Form = () => {
     const { account, databases } = api()
@@ -106,25 +107,8 @@ const Form = () => {
 
     return (
         <div className="w-full">
-            <nav className="flex bg-[#141D2C] justify-between">
-                <div className="flex h-16 items-center ml-3">
-                    <Link href="/">
-                        <div className="text-white font-Montserrat:wght@300 font-bold text-2xl flex justify-start">
-                            HackBud
-                        </div>
-                    </Link>
-                </div>
-                <div className="flex items-center mr-3">
-                    <button
-                        onClick={() => logoutClicked()}
-                        className="font-semibold text-black bg-white py-2 px-4 rounded-3xl"
-                    >
-                        Logout
-                    </button>
-                </div>
-            </nav>
 
-            <form className="flex items-center justify-center bg-white w-full min-h-screen py-2 flex-col mb-8">
+            <form className="flex items-center justify-center bg-white w-full min-h-screen py-2 flex-col mb-8 px-4 md:px-0">
                 <h1 className="text-3xl font-bold text-center text-black mt-6 mb-10">
                     Find your HackBuds
                 </h1>
