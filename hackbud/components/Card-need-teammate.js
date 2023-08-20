@@ -43,9 +43,9 @@ function CardNeedTeammate({ index, item }) {
                         </h1>
                     </div>
 
-                    <div className="my-1 grid grid-cols-4">
+                    <div className="my-1 grid grid-cols-3">
                         {item.skills.map((skill,indexitem) => (
-                            <div key={indexitem} className="border rounded-2xl flex items-center justify-center border-slate-400 my-2 mx-1 text-black text-xs py-2 px-4">
+                            <div key={indexitem} className="border rounded-2xl flex items-center justify-center border-slate-400 my-2 mx-1 text-black text-xs px-3 py-2">
                                 {skill}
                             </div>
                         ))}
