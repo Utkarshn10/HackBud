@@ -34,6 +34,10 @@ export default function Navbar() {
         router.push('/')
     }
 
+    const handleGitHubLogin = () => {
+        account.createOAuth2Session('github', 'https://hack-bud.vercel.app/')
+    }
+
     return (
         <div>
             <nav className="bg-[#141D2C] w-full">
@@ -176,19 +180,12 @@ export default function Navbar() {
                         </div>
                         <div className="flex items-center">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                <Link
-                                    href="/login"
+                                <button
+                                    onClick={() => handleGitHubLogin()}
                                     className="text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium"
                                 >
-                                    Login
-                                </Link>
-
-                                <Link
-                                    href="/signup"
-                                    className="text-white rounded-3xl  border-2 border-white text-md  px-4 py-2"
-                                >
-                                    SignUp
-                                </Link>
+                                    Login with GitHub
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -251,15 +248,10 @@ export default function Navbar() {
                                         href="/login"
                                         className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                                     >
-                                        Login
+                                        Login with GitHub
                                     </Link>
 
-                                    <Link
-                                        href="/signup"
-                                        className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                    >
-                                        SignUp
-                                    </Link>
+                                    
                                 </div>
                             )}
                         </div>

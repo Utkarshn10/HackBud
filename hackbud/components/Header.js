@@ -1,6 +1,13 @@
 import Link from 'next/link'
+import api from '@/components/appwrite'
 
 export default function Header() {
+    const { account } = api()
+    
+    const handleGitHubLogin = () => {
+        account.createOAuth2Session('github', 'https://hack-bud.vercel.app/')
+    }
+
     return (
         <div className="mt-12">
             {' '}
@@ -20,15 +27,15 @@ export default function Header() {
                     teams, and make your hackathon dreams come true. Sign up for
                     free now!
                 </p>
-                <Link
-                    href="/signup"
+                <button
+                    onClick={() => handleGitHubLogin()}
                     className="flex mt-10 mb-4 md:mb-0 items-center rounded-full py-4 px-6 justify-center font-lato text-white bg-violet-600 hover:bg-violet-900 text-sm md:text-lg font-normal"
                 >
                     Get Started Now
-                </Link>
+                </button>
             </div>
             <p className="my-11 text-slate-400 flex justify-center">
-                50+ Hackathon Enthusiasts already joined!
+                70+ Hackathon Enthusiasts already joined!
             </p>
         </div>
     )

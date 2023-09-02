@@ -26,7 +26,7 @@ export default function SignUp() {
     return (
         <>
             <button type="submit" onClick={handleSignUp}>
-                Sign Up
+                {/* Sign Up */}
             </button>
         </>
     )

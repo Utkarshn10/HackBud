@@ -32,7 +32,7 @@ export default function Login() {
     }
 
     const handleGitHubLogin = () => {
-        account.createOAuth2Session('github',"https://hack-bud.vercel.app/")
+        account.createOAuth2Session('github', 'https://hack-bud.vercel.app/')
     }
 
     return (
@@ -51,14 +51,19 @@ export default function Login() {
                         Sign in
                     </h1>
 
-                    <div className="flex justify-center bg-gray-500 rounded-lg font-lato py-2 px-3 text-white my-2">
-                        <button className="flex items-center text-lg" onClick={() => handleGitHubLogin()}>
-                            <AiFillGithub className='text-3xl mr-2'/> <p>Continue with GitHub</p>
-                        </button>
-                    </div>
+                    
 
                     <div className="flex flex-col text-gray-200 font-lato mx-auto h-auto">
-                        <h1 className="my-2 font-semibold text-lg ">Email</h1>
+                    <div className="flex justify-center bg-gray-500 rounded-lg font-lato py-2 px-3 text-white my-2">
+                        <button
+                            className="flex items-center text-lg"
+                            onClick={() => handleGitHubLogin()}
+                        >
+                            <AiFillGithub className="text-3xl mr-2" />{' '}
+                            <p>Continue with GitHub</p>
+                        </button>
+                    </div>
+                        {/* <h1 className="my-2 font-semibold text-lg ">Email</h1>
                         <input
                             id="email"
                             placeholder="Type in your email address"
@@ -90,7 +95,7 @@ export default function Login() {
                             {loading ? 'Loading...' : 'Sign In'}
                         </button>
 
-                        {/* <button
+                        <button
                             type="button"
                             className="py-2 mt-2 rounded-lg w-full  text-lg font-semibold text-[#3A4D5E] hover:bg-[#E4F4FA] p-2 px-4"
                             // onClick={}
