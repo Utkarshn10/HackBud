@@ -47,27 +47,33 @@ export default async (req, res) => {
 }
 
 async function renderEmailTemplate(
-  name,
-  applierTeamEmail,
-  applierTeamName,
-  applierTeamDescription,
-) {
+    teamName,
+    applierEmail,
+    applierName,
+    applierGitHub,
+    applierSkills
+  ) {
     try {
-        // Load and render your email template using EJS
-        const templateFile = await fs.readFile(
-            'invite-template.html',
-            'utf-8'
-        )
-        const renderedTemplate = ejs.render(templateFile, {
-          name,
-          applierTeamEmail,
-          applierTeamName,
-          applierTeamDescription,
-        })
-
-        return renderedTemplate
+      const templateFilePath = path.join(process.cwd(), 'apply-template.html'); // Construct the absolute file path
+      const templateFile = await fs.readFile(templateFilePath, 'utf-8');
+      const renderedTemplate = ejs.render(templateFile, {
+        teamName,
+        applierEmail,
+        applierName,
+        applierGitHub,
+        applierSkills,
+      });
+  
+      return renderedTemplate;
     } catch (error) {
-        console.error('Error rendering email template:', error)
-        throw error
+      console.error('Error rendering email template:', error);
+      throw error;
     }
-}
+  }
+  
+  
+  
+  
+  
+  
+  
