@@ -55,7 +55,7 @@ async function renderEmailTemplate(
     try {
         // Load and render your email template using EJS
         const templateFile = await fs.readFile(
-            '/invite-template.html',
+            'invite-template.html',
             'utf-8'
         )
         const renderedTemplate = ejs.render(templateFile, {
