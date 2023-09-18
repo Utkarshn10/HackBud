@@ -54,7 +54,7 @@ async function renderEmailTemplate(
     applierSkills
   ) {
     try {
-      const templateFilePath = path.join(process.cwd(), 'apply-template.html'); // Construct the absolute file path
+      const templateFilePath = path.join(process.cwd(), 'invite-template.html'); // Construct the absolute file path
       const templateFile = await fs.readFile(templateFilePath, 'utf-8');
       const renderedTemplate = ejs.render(templateFile, {
         teamName,

@@ -41,7 +41,6 @@ export default async (req, res) => {
         applierName,
         applierGitHub,
         applierSkills,
-        path.join(PROJECT_ROOT, 'apply-template.html') // Use path.join here
       ),
     };
 
@@ -60,12 +59,12 @@ async function renderEmailTemplate(
   applierName,
   applierGitHub,
   applierSkills,
-  templateFilePath // Pass the template file path as an argument
 ) {
   try {
-    // Load and render your email template using EJS
+    const templateFilePath = path.join(process.cwd(), 'apply-template.html'); // Construct the absolute file path
     const templateFile = await fs.readFile(templateFilePath, 'utf-8');
     const renderedTemplate = ejs.render(templateFile, {
+    // Load and render your email template using EJS
       teamName,
       applierEmail,
       applierName,
