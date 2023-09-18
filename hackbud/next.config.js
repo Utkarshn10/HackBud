@@ -3,4 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
+// next.config.js
+
+module.exports = {
+  serverRuntimeConfig: {
+    // Define your project root directory
+    PROJECT_ROOT: __dirname,
+  },
+};
+
