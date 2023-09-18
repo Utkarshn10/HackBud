@@ -4,6 +4,8 @@ import nodemailer from 'nodemailer'
 import ejs from 'ejs'
 import fs from 'fs/promises'
 import { toast } from 'react-toastify'
+import path from 'path'; // Import the 'path' module
+import getConfig from 'next/config';
 
 export default async (req, res) => {
     const {
@@ -47,21 +49,19 @@ export default async (req, res) => {
 }
 
 async function renderEmailTemplate(
-    teamName,
-    applierEmail,
-    applierName,
-    applierGitHub,
-    applierSkills
+    name,
+    applierTeamEmail,
+    applierTeamName,
+    applierTeamDescription,
   ) {
     try {
       const templateFilePath = path.join(process.cwd(), 'invite-template.html'); // Construct the absolute file path
       const templateFile = await fs.readFile(templateFilePath, 'utf-8');
       const renderedTemplate = ejs.render(templateFile, {
-        teamName,
-        applierEmail,
-        applierName,
-        applierGitHub,
-        applierSkills,
+        name,
+        applierTeamEmail,
+        applierTeamName,
+        applierTeamDescription,
       });
   
       return renderedTemplate;
