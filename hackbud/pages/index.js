@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import Faq from '@/components/Faq'
 import Header from '@/components/Header'
-import Head from 'next/head';
+
 
 export default function Home() {
     return (
