@@ -5,7 +5,7 @@ export default function Header() {
     const { account } = api()
     
     const handleGitHubLogin = () => {
-        account.createOAuth2Session('github', 'https://hack-bud.vercel.app/')
+        account.createOAuth2Session('github', 'https://hack-bud.vercel.app/choices')
     }
 
     return (

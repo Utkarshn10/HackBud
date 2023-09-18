@@ -35,7 +35,7 @@ export default function Navbar() {
     }
 
     const handleGitHubLogin = () => {
-        account.createOAuth2Session('github', 'https://hack-bud.vercel.app/')
+        account.createOAuth2Session('github', 'https://hack-bud.vercel.app/choices')
     }
 
     return (
