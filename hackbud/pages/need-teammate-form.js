@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router'
 
 const Form = () => {
-    const { account, getSession, databases } = api()
+    const { account,  databases } = api()
     const [hackathonName, setHackathonName] = useState('')
     const [teamName, setTeamName] = useState('')
     const [teamDescription, setTeamDescription] = useState('')
@@ -18,6 +18,7 @@ const Form = () => {
     const [githubURL, setGithubURL] = useState('')
     const [twitterURL, setTwitterURL] = useState('')
     const router = useRouter()
+
     useEffect(() => {
         const promise = account.get()
         promise.then(
@@ -46,7 +47,6 @@ const Form = () => {
             teamName,
             teamDescription,
             teamSkills,
-            requiredTeammates,
             country,
             contactEmail,
             githubURL,
@@ -80,17 +80,6 @@ const Form = () => {
             })
     }
 
-    // function ResetForm() {
-    //     setHackathonName('')
-    //     setTeamName('')
-    //     setTeamDescription('')
-    //     setTeamSkills([])
-    //     setRequiredTeammates(0)
-    //     setCountry('')
-    //     setContactEmail('')
-    //     setGithubURL('')
-    //     setTwitterURL('')
-    // }
 
     return (
         <div className="w-full">
@@ -161,24 +150,6 @@ const Form = () => {
                                 setTeamSkills(e.target.value.split(','))
                             }
                             placeholder="Next.js, TailwindCSS, Figma"
-                            className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-black"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label
-                            htmlFor="requiredTeammates"
-                            className="block mb-2 font-medium text-gray-700 font-semibold"
-                        >
-                            Required Number of Teammates
-                        </label>
-                        <input
-                            type="number"
-                            id="requiredTeammates"
-                            value={requiredTeammates}
-                            onChange={(e) =>
-                                setRequiredTeammates(e.target.value)
-                            }
                             className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-black"
                             required
                         />

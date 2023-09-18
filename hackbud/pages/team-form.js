@@ -34,6 +34,7 @@ const Form = () => {
     function SubmitForm(e) {
         e.preventDefault()
         const userId = account.client.config.project
+        const created_by = userId
         const name = personName
         const about = Description
         const available = true
@@ -55,10 +56,7 @@ const Form = () => {
             toast.error('Please fill all in the missing fields')
             return
         }
-
         const data = {
-            // hackathonName,
-            // teamName,
             name,
             about,
             skills,
@@ -66,6 +64,7 @@ const Form = () => {
             contact,
             github_url,
             available,
+            created_by
         }
         databases
             .createDocument(
@@ -85,7 +84,6 @@ const Form = () => {
                 ]
             )
             .then((response) => {
-                // console.log(response)
                 router.push('/teams')
             })
             .catch((error) => {

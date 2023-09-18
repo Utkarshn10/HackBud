@@ -29,24 +29,6 @@ export default function Choices() {
     },[])
     return (
         <div className="w-full">
-            <nav className="flex bg-[#141D2C] justify-between">
-                <div className="flex h-16 items-center ml-3">
-                    <Link href="/">
-                        <div className="text-white font-Montserrat:wght@300 font-bold text-2xl flex justify-start">
-                            HackBud
-                        </div>
-                    </Link>
-                </div>
-                <div className="flex items-center mr-3">
-                    <button
-                        onClick={() => logoutClicked()}
-                        className="font-semibold text-black bg-white py-2 px-4 rounded-3xl"
-                    >
-                        Logout
-                    </button>
-                </div>
-            </nav>
-
             <div className="flex items-center justify-center bg-white w-full py-2 flex-col">
                 <div className="flex items-center justify-center flex-col  mt-4">
                     <h2 className="font-bold text-4xl text-black text-center mb-4">
