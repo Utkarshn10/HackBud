@@ -116,7 +116,7 @@ function CardNeedTeammate({ index, item }) {
                 </Link>
 
                 <button
-                    className="flex my-3 text-md items-center justify-center text-purple-800 mx-4  hover:underline underline-offset-4"
+                    className="flex m-3 justify-end text-md items-center ml-auto text-purple-800 font-semibold rounded-xl bg-purple-200 px-4 py-2 hover:bg-purple-500 hover:text-white"
                     onClick={() => sendEmail(item.contact, item.name)}
                 >
                     {!loader ? (
@@ -148,15 +148,15 @@ function CardNeedTeammate({ index, item }) {
                     )}
                 </button>
 
-                {item.twitter_url != null && (
-                    <Link
-                        className="flex my-3 text-md items-center justify-center text-black mx-4 hover:underline underline-offset-4"
-                        href={item.twitter_url}
-                    >
-                        <AiOutlineTwitter className="text-md" />
-                        <h2 className="pl-1">Twitter</h2>
-                    </Link>
-                )}
+                {/* {item.twitter_url != null && (
+        <Link
+            className="flex my-3 text-md items-center justify-center text-black mx-4 hover:underline underline-offset-4"
+            href={item.twitter_url}
+        >
+            <AiOutlineTwitter className="text-md" />
+            <h2 className="pl-1">Twitter</h2>
+        </Link>
+    )} */}
             </div>
         </div>
     )

@@ -118,7 +118,7 @@ function Card({ index, item }) {
                         <h2 className="pl-1">Github</h2>
                     </Link>
                     <button
-                        className="flex my-3 text-md items-center justify-center text-purple-500 border-2 border-purple-500 px-2 py-1 rounded-md mx-4 hover:underline underline-offset-4"
+                        className="flex m-3 ml-auto text-md items-center justify-center text-purple-500 border-2 border-purple-500 px-2 py-1 rounded-md mx-4 hover:underline underline-offset-4"
                         onClick={() =>
                             sendEmail(item.contactEmail, item.teamName)
                         }
