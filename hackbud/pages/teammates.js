@@ -28,21 +28,23 @@ function Teammates() {
     useEffect(() => {
         setLoading(true)
         if (checkAuth()) {
-            const promise = databases.listDocuments(
-                process.env.NEXT_PUBLIC_DB_ID,
-                process.env.NEXT_PUBLIC_Collection_need_team_ID
-            )
+            setTimeout(() => {
+                const promise = databases.listDocuments(
+                    process.env.NEXT_PUBLIC_DB_ID,
+                    process.env.NEXT_PUBLIC_Collection_need_team_ID
+                )
 
-            promise.then(
-                function (response) {
-                    // console.log(response) // Success
-                    setData(response.documents)
-                    setLoading(false)
-                },
-                function (error) {
-                    console.log(error) // Failure
-                }
-            )
+                promise.then(
+                    function (response) {
+                        // console.log(response) // Success
+                        setData(response.documents)
+                        setLoading(false)
+                    },
+                    function (error) {
+                        console.log(error) // Failure
+                    }
+                )
+            }, [4000])
         }
     }, [])
 

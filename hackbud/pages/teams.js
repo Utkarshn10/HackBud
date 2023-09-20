@@ -10,6 +10,7 @@ function Teams() {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const router = useRouter()
+    
 
     const checkAuth = async () => {
         const promise = account.get()
@@ -28,21 +29,23 @@ function Teams() {
     useEffect(() => {
         setLoading(true)
         if (checkAuth()) {
-            const promise = databases.listDocuments(
-                process.env.NEXT_PUBLIC_DB_ID,
-                process.env.NEXT_PUBLIC_Collection_ID
-            )
-
-            promise.then(
-                function (response) {
-                    // console.log(response) // Success
-                    setData(response.documents)
-                    setLoading(false)
-                },
-                function (error) {
-                    console.log(error) // Failure
-                }
-            )
+            setTimeout(()=>{
+                const promise = databases.listDocuments(
+                    process.env.NEXT_PUBLIC_DB_ID,
+                    process.env.NEXT_PUBLIC_Collection_ID
+                )
+    
+                promise.then(
+                    function (response) {
+                        // console.log(response) // Success
+                        setData(response.documents)
+                        setLoading(false)
+                    },
+                    function (error) {
+                        console.log(error) // Failure
+                    }
+                )
+            },[4000])
         }
     }, [])
 
