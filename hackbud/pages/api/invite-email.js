@@ -4,18 +4,18 @@ import nodemailer from 'nodemailer'
 import ejs from 'ejs'
 import fs from 'fs/promises'
 import { toast } from 'react-toastify'
-import path from 'path'; // Import the 'path' module
-import getConfig from 'next/config';
+import path from 'path' // Import the 'path' module
+import getConfig from 'next/config'
 
 export default async (req, res) => {
     const {
-      userEmail,
-      name,
-      applierTeamEmail,
-      applierTeamName,
-      applierTeamDescription,
+        userEmail,
+        name,
+        applierTeamEmail,
+        applierTeamName,
+        applierTeamDescription,
     } = req.body
-  
+
     try {
         // Create a Nodemailer transporter
         const transporter = nodemailer.createTransport({
@@ -28,14 +28,17 @@ export default async (req, res) => {
 
         // Define the email data
         const mailOptions = {
-            from: process.env.HACKATHON_EMAIL_SENDER_ID,
+            from: {
+                name: 'HackBud Team',
+                address: process.env.HACKATHON_EMAIL_SENDER_ID,
+            },
             to: userEmail,
             subject: 'Hackathon Team Invitation',
             html: await renderEmailTemplate(
-              name,
-              applierTeamEmail,
-              applierTeamName,
-              applierTeamDescription,
+                name,
+                applierTeamEmail,
+                applierTeamName,
+                applierTeamDescription
             ),
         }
 
@@ -52,28 +55,24 @@ async function renderEmailTemplate(
     name,
     applierTeamEmail,
     applierTeamName,
-    applierTeamDescription,
-  ) {
+    applierTeamDescription
+) {
     try {
-      const templateFilePath = path.join(process.cwd(), 'invite-template.html'); // Construct the absolute file path
-      const templateFile = await fs.readFile(templateFilePath, 'utf-8');
-      const renderedTemplate = ejs.render(templateFile, {
-        name,
-        applierTeamEmail,
-        applierTeamName,
-        applierTeamDescription,
-      });
-  
-      return renderedTemplate;
+        const templateFilePath = path.join(
+            process.cwd(),
+            'invite-template.html'
+        ) // Construct the absolute file path
+        const templateFile = await fs.readFile(templateFilePath, 'utf-8')
+        const renderedTemplate = ejs.render(templateFile, {
+            name,
+            applierTeamEmail,
+            applierTeamName,
+            applierTeamDescription,
+        })
+
+        return renderedTemplate
     } catch (error) {
-      console.error('Error rendering email template:', error);
-      throw error;
+        console.error('Error rendering email template:', error)
+        throw error
     }
-  }
-  
-  
-  
-  
-  
-  
-  
+}
