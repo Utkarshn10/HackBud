@@ -50,18 +50,18 @@ function Teams() {
     }, [])
 
     return (
-        <div className="w-full">
+        <div className="w-full bg-[#141D2C] ">
             {loading ? (
-                <div className="flex items-center justify-center h-screen bg-white">
+                <div className="flex items-center justify-center h-screen ">
                     <div class="flex h-8 w-8 absolute">
-                        <span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-slate-600 opacity-75"></span>
-                        <span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-slate-600"></span>
+                        <span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-white opacity-75"></span>
+                        <span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-white"></span>
                     </div>
                 </div>
             ) : (
-                <div className="flex items-center bg-white w-full min-h-screen py-2 flex-col">
+                <div className="flex items-center w-full min-h-screen py-2 flex-col">
                     <div className="flex text-center md:text-left my-5">
-                        <h1 className="text-4xl font-orkney font-bold mb-4 text-black ml-3">
+                        <h1 className="text-4xl font-bold mb-4 text-white ml-3 font-orkney:wght@300">
                             Recommended Teams
                         </h1>
                     </div>

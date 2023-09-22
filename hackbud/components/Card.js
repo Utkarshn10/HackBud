@@ -5,6 +5,7 @@ import { AiFillGithub, AiOutlineMail, AiOutlineTwitter } from 'react-icons/ai'
 import axios from 'axios'
 import api from '@/components/appwrite'
 import { toast } from 'react-toastify'
+import startCase from 'lodash/startCase';
 
 function Card({ index, item }) {
     const [date, setDate] = useState('')
@@ -61,18 +62,23 @@ function Card({ index, item }) {
                 axios
                     .post('/api/apply-email', requestData)
                     .then((response) => {
+                        setLoader(false)
                         toast.success('Email Sent Successfully')
                     })
-                    .catch((err) => console.log(err))
+                    .catch((err) => {
+                        setLoader(false)
+                        console.log(err)
+                    })
             }
         } else {
+            setLoader(false)
+
             toast.error('Please fill Join a Team form to Apply')
         }
-        setLoader(false)
     }
 
     return (
-        <div className="w-full border rounded-3xl border-slate-300">
+        <div className="w-full border rounded-3xl bg-white border-slate-100">
             <div
                 className={`bg-${
                     colors[index % colors.length]
@@ -81,14 +87,14 @@ function Card({ index, item }) {
             >
                 <div className="mx-3 py-1">
                     <div className="mt-2"></div>
-                    <div className="w-1/3 border font-bold rounded-3xl flex items-center justify-center bg-white text-black text-xs py-2 ">
-                        <h2 className="">{date}</h2>
+                    <div className="font-bold flex items-center justify-start font-Montserrat:wght@300  text-black py-2 ">
+                        <h2 className="text-lg">{item.teamName}</h2>
                     </div>
 
                     <div className="my-4 text-black">
-                        <h3 className="text-sm font-bold font-orkney">
+                        {/* <h3 className="text-sm font-bold font-orkney">
                             {item.teamName}
-                        </h3>
+                        </h3> */}
                         <h1 className="text-lg font-bold font-orkney">
                             {item.hackathonName}
                         </h1>
@@ -101,9 +107,9 @@ function Card({ index, item }) {
                         {item.teamSkills.map((skill, indexitem) => (
                             <div
                                 key={indexitem}
-                                className="border rounded-2xl flex items-center justify-center border-slate-400 my-2 mx-1 text-black text-xs py-2 px-4 "
+                                className="border rounded-2xl flex items-center justify-center bg-white my-2 mx-1 text-black text-xs py-2 px-4 "
                             >
-                                {skill}
+                                {startCase(skill)}
                             </div>
                         ))}
                     </div>
@@ -118,7 +124,7 @@ function Card({ index, item }) {
                         <h2 className="pl-1">Github</h2>
                     </Link>
                     <button
-                        className="flex m-3 ml-auto text-md items-center justify-center text-purple-500 border-2 border-purple-500 px-2 py-1 rounded-md mx-4 hover:underline underline-offset-4"
+                        className="flex m-3 ml-auto text-md items-center justify-center text-white bg-purple-500 font-semibold rounded-xl px-4 py-2 hover:bg-purple-700 hover:text-white mx-4 "
                         onClick={() =>
                             sendEmail(item.contactEmail, item.teamName)
                         }

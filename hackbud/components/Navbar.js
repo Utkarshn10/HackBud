@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Transition } from '@headlessui/react'
 import api from '@/components/appwrite'
-import AuthContext from './Auth/authContext'
 import { useRouter } from 'next/router'
 
 export default function Navbar() {
@@ -40,7 +39,7 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className="bg-[#141D2C] w-full">
+            <nav className="bg-[#0F172A] w-full">
                 {isAuthenticated ? (
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16">
@@ -54,7 +53,7 @@ export default function Navbar() {
                                 </div>
 
                                 <div className="hidden md:block">
-                                    <div className="ml-10 flex items-baseline space-x-4">
+                                    <div className="ml-10 flex items-center space-x-4 justify-center">
                                         <Link
                                             href="/need-teammate-form"
                                             onClick={() =>

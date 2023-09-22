@@ -106,15 +106,15 @@ const Form = () => {
     return (
         <div className="w-full">
 
-            <form className="flex items-center justify-center bg-white w-full min-h-screen py-2 flex-col mb-8 px-4 md:px-0">
-                <h1 className="text-3xl font-bold text-center text-black mt-6 mb-10">
+            <form className="flex items-center justify-center w-full min-h-screen py-2 flex-col mb-8 px-4 md:px-0">
+                <h1 className="text-4xl font-bold text-center text-white mt-6 mb-10">
                     Find your HackBuds
                 </h1>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="mb-4 col-span-2">
                         <label
                             htmlFor="teamName"
-                            className="block mb-2 font-medium text-gray-700 font-semibold"
+                            className="block mb-2 font-medium text-gray-100 "
                         >
                             Full Name
                         </label>
@@ -130,7 +130,7 @@ const Form = () => {
                     <div className="mb-4 col-span-2">
                         <label
                             htmlFor="Description"
-                            className="block mb-2 font-medium text-gray-700 font-semibold"
+                            className="block mb-2 font-medium text-gray-100"
                         >
                             Description
                         </label>
@@ -145,7 +145,7 @@ const Form = () => {
                     <div className="mb-4">
                         <label
                             htmlFor="Skills"
-                            className="block mb-2 font-medium text-gray-700 font-semibold"
+                            className="block mb-2 font-medium text-gray-100"
                         >
                             Skills
                         </label>
@@ -164,7 +164,7 @@ const Form = () => {
                     <div className="mb-4">
                         <label
                             htmlFor="country"
-                            className="block mb-2 font-medium text-gray-700 font-semibold"
+                            className="block mb-2 font-medium text-gray-100"
                         >
                             Country
                         </label>
@@ -180,7 +180,7 @@ const Form = () => {
                     <div className="mb-4">
                         <label
                             htmlFor="contactEmail"
-                            className="block mb-2 font-medium text-gray-700 font-semibold"
+                            className="block mb-2 font-medium text-gray-100"
                         >
                             Contact Email
                         </label>
@@ -196,7 +196,7 @@ const Form = () => {
                     <div className="mb-4">
                         <label
                             htmlFor="githubURL"
-                            className="block mb-2 font-medium text-gray-700 font-semibold"
+                            className="block mb-2 font-medium text-gray-100 "
                         >
                             GitHub URL
                         </label>
@@ -236,7 +236,7 @@ const Form = () => {
                     <button
                         type="submit"
                         onClick={SubmitForm}
-                        className="px-4 py-2 mx-4 font-medium text-white bg-black rounded-md hover:bg-black w-1/4"
+                        className="px-4 py-2 mx-4 font-medium text-white bg-violet-600 hover:bg-violet-900 rounded-md  w-1/4"
                     >
                         Submit
                     </button>
