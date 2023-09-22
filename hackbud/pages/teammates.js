@@ -53,8 +53,8 @@ function Teammates() {
             {loading ? (
                 <div className="flex items-center justify-center h-screen ">
                     <div class="flex h-8 w-8 absolute">
-                        <span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-white opacity-75"></span>
-                        <span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-white"></span>
+                        <span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-violet-600 opacity-75"></span>
+                        <span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-violet-400"></span>
                     </div>
                 </div>
             ) : (

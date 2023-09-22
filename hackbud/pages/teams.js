@@ -10,7 +10,6 @@ function Teams() {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const router = useRouter()
-    
 
     const checkAuth = async () => {
         const promise = account.get()
@@ -29,12 +28,12 @@ function Teams() {
     useEffect(() => {
         setLoading(true)
         if (checkAuth()) {
-            setTimeout(()=>{
+            setTimeout(() => {
                 const promise = databases.listDocuments(
                     process.env.NEXT_PUBLIC_DB_ID,
                     process.env.NEXT_PUBLIC_Collection_ID
                 )
-    
+
                 promise.then(
                     function (response) {
                         // console.log(response) // Success
@@ -45,7 +44,7 @@ function Teams() {
                         console.log(error) // Failure
                     }
                 )
-            },[4000])
+            }, [4000])
         }
     }, [])
 
@@ -54,8 +53,8 @@ function Teams() {
             {loading ? (
                 <div className="flex items-center justify-center h-screen ">
                     <div class="flex h-8 w-8 absolute">
-                        <span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-white opacity-75"></span>
-                        <span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-white"></span>
+                        <span class="animate-ping absolute h-8 w-8 -top-4 -left-4 rounded-full bg-violet-600 opacity-75"></span>
+                        <span class="relative rounded-full h-8 w-8 -top-4 -left-4 bg-violet-400"></span>
                     </div>
                 </div>
             ) : (

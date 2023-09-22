@@ -74,6 +74,11 @@ function CardNeedTeammate({ index, item }) {
             toast.error('Please fill Join a Team form to Apply')
         }
     }
+    const [showMore, setShowMore] = useState(false)
+
+    const toggleShowMore = () => {
+        setShowMore(!showMore)
+    }
 
     return (
         <div className="w-full border rounded-3xl border-slate-100 bg-white my-4 font-orkney:wght@300">
@@ -94,8 +99,18 @@ function CardNeedTeammate({ index, item }) {
                         {/* <h3 className="text-sm font-bold font-orkney">
                             {item.name}
                         </h3> */}
-                        <h1 className="text-sm font-light font-orkney:wght@300 mt-3">
-                            {item.about}
+                        <h1
+                            className={`text-sm font-light 'text-black' font-orkney:wght@300 mt-3`}
+                        >
+                            {showMore ? item.about : item.about.slice(0, 50)}
+                            {item.about.length > 100 && !showMore && (
+                                <button
+                                    className=" pl-2 text-purple-500 hover:text-purple-800 cursor-pointer"
+                                    onClick={toggleShowMore}
+                                >
+                                    Read More
+                                </button>
+                            )}
                         </h1>
                     </div>
 
