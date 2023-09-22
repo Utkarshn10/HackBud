@@ -59,14 +59,14 @@ function Teams() {
                     </div>
                 </div>
             ) : (
-                <div className="flex items-center w-full min-h-screen py-2 flex-col">
+                <div className="flex items-center w-full  py-2 flex-col">
                     <div className="flex text-center md:text-left my-5">
                         <h1 className="text-4xl font-bold mb-4 text-white ml-3 font-orkney:wght@300">
                             Recommended Teams
                         </h1>
                     </div>
                     {data.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen py-2s">
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-2">
                             {data.map((item, index) => (
                                 <div key={index} className="mx-3">
                                     <Card index={index} item={item} />
