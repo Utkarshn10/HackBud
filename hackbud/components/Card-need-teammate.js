@@ -8,27 +8,10 @@ import { toast, ToastContainer } from 'react-toastify'
 import startCase from 'lodash/startCase'
 
 function CardNeedTeammate({ index, item }) {
-    const [date, setDate] = useState('')
     const { account, databases } = api()
     const colors = ['#e3dbfa', '#fbe2f4', '#ffe1cc', '#d4f6ed']
     const [loader, setLoader] = useState(false)
     const [isCooldownActive, setIsCooldownActive] = useState(false)
-
-    useEffect(() => {
-        const dateString = item.$updatedAt
-        const date = new Date(dateString)
-
-        const year = date.getFullYear()
-        const month = new Intl.DateTimeFormat('en-US', {
-            month: 'long',
-        })
-            .format(date)
-            .slice(0, 3)
-        const day = date.getDate()
-
-        const formattedDate = `${day} ${month}, ${year}`
-        setDate(formattedDate)
-    }, [])
 
     async function sendEmail(userEmail, name) {
         if (isCooldownActive) {

@@ -8,7 +8,6 @@ import { toast } from 'react-toastify'
 import startCase from 'lodash/startCase'
 
 function Card({ index, item }) {
-    const [date, setDate] = useState('')
     const { account, databases } = api()
     const colors = ['#e3dbfa', '#fbe2f4', '#ffe1cc', '#d4f6ed']
     const [loader, setLoader] = useState(false)
