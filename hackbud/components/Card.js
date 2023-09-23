@@ -14,22 +14,6 @@ function Card({ index, item }) {
     const [loader, setLoader] = useState(false)
     const [isCooldownActive, setIsCooldownActive] = useState(false)
 
-    useEffect(() => {
-        const dateString = item.$updatedAt
-        const date = new Date(dateString)
-
-        const year = date.getFullYear()
-        const month = new Intl.DateTimeFormat('en-US', {
-            month: 'long',
-        })
-            .format(date)
-            .slice(0, 3)
-        const day = date.getDate()
-
-        const formattedDate = `${day} ${month}, ${year}`
-        setDate(formattedDate)
-    }, [])
-
     async function sendEmail(userEmail, teamName) {
         if (isCooldownActive) {
             toast.error('Please wait for 2 minutes before applying again.')
