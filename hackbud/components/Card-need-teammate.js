@@ -19,10 +19,10 @@ function CardNeedTeammate({ index, item }) {
         } else {
             setIsCooldownActive(true)
             setLoader(true)
-            const userId = account.client.config.project
+            const userId = await account.get().id
             const documents = await databases.listDocuments(
                 process.env.NEXT_PUBLIC_DB_ID,
-                process.env.NEXT_PUBLIC_Collection_ID,
+                process.env.NEXT_PUBLIC_Collection_need_team_ID,
                 [Query.equal('created_by', [userId])]
             )
 

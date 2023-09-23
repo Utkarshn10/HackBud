@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router'
 
 const Form = () => {
-    const { account,  databases } = api()
+    const { account, databases } = api()
     const [hackathonName, setHackathonName] = useState('')
     const [teamName, setTeamName] = useState('')
     const [teamDescription, setTeamDescription] = useState('')
@@ -32,9 +32,9 @@ const Form = () => {
         )
     }, [])
 
-    function SubmitForm(e) {
+    async function SubmitForm(e) {
         e.preventDefault()
-        const userId = account.client.config.project
+        const userId = await account.get().id
         // const about = teamDescription
         // const available = true
         // const contact = contactEmail
@@ -52,7 +52,6 @@ const Form = () => {
             githubURL,
             created_by,
         }
-
 
         databases
             .createDocument(
@@ -79,7 +78,6 @@ const Form = () => {
                 console.log(error)
             })
     }
-
 
     return (
         <div className="w-full">

@@ -37,7 +37,7 @@ export default function Choices() {
                             At the heart of progress lies collaboration. Join a
                             community of driven individuals eager to unite their
                             talents, share ideas, and redefine innovation.
-                            Together, we'll pave the path to success.
+                            Together, we will pave the path to success.
                         </div>
                     </div>
                 </div>

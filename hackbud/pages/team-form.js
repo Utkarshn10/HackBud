@@ -4,7 +4,7 @@ import { ID, Permission, Role } from 'appwrite'
 import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 import Navbar from '@/components/Navbar'
 
 const Form = () => {
@@ -18,7 +18,7 @@ const Form = () => {
     const [twitterURL, setTwitterURL] = useState(null)
     const router = useRouter()
 
-    useEffect(()=>{
+    useEffect(() => {
         const promise = account.get()
         promise.then(
             function (response) {
@@ -29,11 +29,11 @@ const Form = () => {
                 router.push('/')
             }
         )
-    },[])
+    }, [])
 
-    function SubmitForm(e) {
+    async function SubmitForm(e) {
         e.preventDefault()
-        const userId = account.client.config.project
+        const userId = await account.get().id
         const created_by = userId
         const name = personName
         const about = Description
@@ -64,7 +64,7 @@ const Form = () => {
             contact,
             github_url,
             available,
-            created_by
+            created_by,
         }
         databases
             .createDocument(
@@ -105,7 +105,6 @@ const Form = () => {
 
     return (
         <div className="w-full">
-
             <form className="flex items-center justify-center w-full min-h-screen py-2 flex-col mb-8 px-4 md:px-0">
                 <h1 className="text-4xl font-bold text-center text-white mt-6 mb-10">
                     Find your HackBuds
