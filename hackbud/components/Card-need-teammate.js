@@ -12,6 +12,7 @@ function CardNeedTeammate({ index, item }) {
     const { account, databases } = api()
     const colors = ['#e3dbfa', '#fbe2f4', '#ffe1cc', '#d4f6ed']
     const [loader, setLoader] = useState(false)
+    const [isCooldownActive, setIsCooldownActive] = useState(false)
 
     useEffect(() => {
         const dateString = item.$updatedAt
@@ -30,48 +31,54 @@ function CardNeedTeammate({ index, item }) {
     }, [])
 
     async function sendEmail(userEmail, name) {
-        setLoader(true)
-        const userId = account.client.config.project
-        const documents = await databases.listDocuments(
-            process.env.NEXT_PUBLIC_DB_ID,
-            process.env.NEXT_PUBLIC_Collection_ID,
-            [Query.equal('created_by', [userId])]
-        )
-
-        const applierTeamEmail = documents.documents[0].contactEmail
-        const applierTeamName = documents.documents[0].teamName
-        const applierTeamDescription = documents.documents[0].teamDescription
-
-        if (
-            applierTeamEmail.length > 0 &&
-            applierTeamName.length > 0 &&
-            applierTeamDescription.length > 0
-        ) {
-            if (userEmail === applierTeamEmail) {
-                toast.error('You cannot apply for you own Team.')
-            } else {
-                const requestData = {
-                    userEmail,
-                    name,
-                    applierTeamEmail,
-                    applierTeamName,
-                    applierTeamDescription,
-                }
-                axios
-                    .post('/api/invite-email', requestData)
-                    .then((response) => {
-                        setLoader(false)
-                        toast.success('Email Sent Successfully')
-                    })
-                    .catch((err) => {
-                        setLoader(false)
-                        toast.error('Email Could Not Be Sent !')
-                        console.log(err)
-                    })
-            }
+        if (isCooldownActive) {
+            toast.error('Please wait for 2 minutes before applying again.')
         } else {
-            setLoader(false)
-            toast.error('Please fill Join a Team form to Apply')
+            setIsCooldownActive(true)
+            setLoader(true)
+            const userId = account.client.config.project
+            const documents = await databases.listDocuments(
+                process.env.NEXT_PUBLIC_DB_ID,
+                process.env.NEXT_PUBLIC_Collection_ID,
+                [Query.equal('created_by', [userId])]
+            )
+
+            const applierTeamEmail = documents.documents[0].contactEmail
+            const applierTeamName = documents.documents[0].teamName
+            const applierTeamDescription =
+                documents.documents[0].teamDescription
+
+            if (
+                applierTeamEmail.length > 0 &&
+                applierTeamName.length > 0 &&
+                applierTeamDescription.length > 0
+            ) {
+                if (userEmail === applierTeamEmail) {
+                    toast.error('You cannot apply for you own Team.')
+                } else {
+                    const requestData = {
+                        userEmail,
+                        name,
+                        applierTeamEmail,
+                        applierTeamName,
+                        applierTeamDescription,
+                    }
+                    axios
+                        .post('/api/invite-email', requestData)
+                        .then((response) => {
+                            setLoader(false)
+                            toast.success('Email Sent Successfully')
+                        })
+                        .catch((err) => {
+                            setLoader(false)
+                            toast.error('Email Could Not Be Sent !')
+                            console.log(err)
+                        })
+                }
+            } else {
+                setLoader(false)
+                toast.error('Please fill Join a Team form to Apply')
+            }
         }
     }
     const [showMore, setShowMore] = useState(false)
@@ -118,7 +125,7 @@ function CardNeedTeammate({ index, item }) {
                         {item.skills.map((skill, indexitem) => (
                             <div
                                 key={indexitem}
-                                className="font-orkney:wght@300 border font-semibold rounded-2xl flex items-center justify-center bg-white my-2 mx-1 text-black text-xs px-3 py-2"
+                                className="font-orkney:wght@300 border font-semibold rounded-2xl flex items-center justify-center bg-white m-1 text-black text-xs px-3 py-2"
                             >
                                 {startCase(skill)}
                             </div>

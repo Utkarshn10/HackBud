@@ -53,7 +53,7 @@ export default function Navbar() {
                                 </div>
 
                                 <div className="hidden md:block">
-                                    <div className="ml-10 flex items-center space-x-4 justify-center">
+                                    <div className="ml-10 flex items-baseline space-x-4 justify-center">
                                         <Link
                                             href="/need-teammate-form"
                                             onClick={() =>

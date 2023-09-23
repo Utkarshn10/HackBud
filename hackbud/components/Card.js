@@ -5,13 +5,14 @@ import { AiFillGithub, AiOutlineMail, AiOutlineTwitter } from 'react-icons/ai'
 import axios from 'axios'
 import api from '@/components/appwrite'
 import { toast } from 'react-toastify'
-import startCase from 'lodash/startCase';
+import startCase from 'lodash/startCase'
 
 function Card({ index, item }) {
     const [date, setDate] = useState('')
     const { account, databases } = api()
     const colors = ['#e3dbfa', '#fbe2f4', '#ffe1cc', '#d4f6ed']
     const [loader, setLoader] = useState(false)
+    const [isCooldownActive, setIsCooldownActive] = useState(false)
 
     useEffect(() => {
         const dateString = item.$updatedAt
@@ -30,50 +31,59 @@ function Card({ index, item }) {
     }, [])
 
     async function sendEmail(userEmail, teamName) {
-        setLoader(true)
-        const userId = account.client.config.project
-        const documents = await databases.listDocuments(
-            process.env.NEXT_PUBLIC_DB_ID,
-            process.env.NEXT_PUBLIC_Collection_need_team_ID,
-            [Query.equal('created_by', [userId])]
-        )
-        const applierEmail = documents.documents[0].contact
-        const applierName = documents.documents[0].name
-        const applierGitHub = documents.documents[0].github_url
-        const applierSkills = documents.documents[0].skills.join()
-
-        if (
-            applierEmail.length > 0 &&
-            applierName.length > 0 &&
-            applierGitHub.length > 0 &&
-            applierSkills.length > 0
-        ) {
-            if (userEmail === applierEmail) {
-                toast.error('You cannot apply for you own Team.')
-            } else {
-                const requestData = {
-                    userEmail,
-                    teamName,
-                    applierEmail,
-                    applierName,
-                    applierGitHub,
-                    applierSkills,
-                }
-                axios
-                    .post('/api/apply-email', requestData)
-                    .then((response) => {
-                        setLoader(false)
-                        toast.success('Email Sent Successfully')
-                    })
-                    .catch((err) => {
-                        setLoader(false)
-                        console.log(err)
-                    })
-            }
+        if (isCooldownActive) {
+            toast.error('Please wait for 2 minutes before applying again.')
         } else {
-            setLoader(false)
+            setIsCooldownActive(true)
 
-            toast.error('Please fill Join a Team form to Apply')
+            setLoader(true)
+            const userId = account.client.config.project
+            const documents = await databases.listDocuments(
+                process.env.NEXT_PUBLIC_DB_ID,
+                process.env.NEXT_PUBLIC_Collection_need_team_ID,
+                [Query.equal('created_by', [userId])]
+            )
+            const applierEmail = documents.documents[0].contact
+            const applierName = documents.documents[0].name
+            const applierGitHub = documents.documents[0].github_url
+            const applierSkills = documents.documents[0].skills.join()
+
+            if (
+                applierEmail.length > 0 &&
+                applierName.length > 0 &&
+                applierGitHub.length > 0 &&
+                applierSkills.length > 0
+            ) {
+                if (userEmail === applierEmail) {
+                    toast.error('You cannot apply for you own Team.')
+                } else {
+                    setTimeout(() => {
+                        setIsCooldownActive(false)
+                    }, 120000) // 120,000 milliseconds = 2 minutes
+                    const requestData = {
+                        userEmail,
+                        teamName,
+                        applierEmail,
+                        applierName,
+                        applierGitHub,
+                        applierSkills,
+                    }
+                    axios
+                        .post('/api/apply-email', requestData)
+                        .then((response) => {
+                            setLoader(false)
+                            toast.success('Email Sent Successfully')
+                        })
+                        .catch((err) => {
+                            setLoader(false)
+                            console.log(err)
+                        })
+                }
+            } else {
+                setLoader(false)
+
+                toast.error('Please fill Join a Team form to Apply')
+            }
         }
     }
 
@@ -95,10 +105,10 @@ function Card({ index, item }) {
                         {/* <h3 className="text-sm font-bold font-orkney">
                             {item.teamName}
                         </h3> */}
-                        <h1 className="text-lg font-bold font-orkney">
+                        <h1 className="text-lg font-bold font-orkney:wght@300">
                             {item.hackathonName}
                         </h1>
-                        <h1 className="text-sm font-light font-orkney mt-3">
+                        <h1 className="text-sm font-light font-orkney:wght@300 mt-3">
                             {item.teamDescription}
                         </h1>
                     </div>
@@ -107,7 +117,7 @@ function Card({ index, item }) {
                         {item.teamSkills.map((skill, indexitem) => (
                             <div
                                 key={indexitem}
-                                className="border rounded-2xl flex items-center justify-center bg-white my-2 mx-1 text-black text-xs py-2 px-4 "
+                                className="font-orkney:wght@300 border font-semibold rounded-2xl flex items-center justify-center bg-white m-1 text-black text-xs px-3 py-2"
                             >
                                 {startCase(skill)}
                             </div>
