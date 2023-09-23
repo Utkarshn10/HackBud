@@ -5,9 +5,8 @@ import { useRouter } from 'next/router'
 import api from '@/components/appwrite'
 
 export default function Choices() {
-    const { account} = api()
+    const { account } = api()
     const router = useRouter()
-
 
     function logoutClicked() {
         console.log('Session deleted')
@@ -15,36 +14,36 @@ export default function Choices() {
         router.push('/')
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const promise = account.get()
         promise.then(
-            function (response) {
-            },
+            function (response) {},
             function (error) {
                 console.log('error = ', error) // Failure
                 router.push('/')
                 return false
             }
         )
-    },[])
+    }, [])
     return (
-        <div className="w-full">
-            <div className="flex items-center justify-center bg-white w-full py-2 flex-col">
+        <div className="w-full bg-[#141D2C]">
+            <div className="flex items-center justify-center  w-full py-2 flex-col">
                 <div className="flex items-center justify-center flex-col  mt-4">
-                    <h2 className="font-bold text-4xl text-black text-center mb-4">
-                        Collaborate, Innovate, Succeed
+                    <h2 className="font-bold text-4xl text-white text-center mb-4">
+                        Where Ideas Flourish, Together
                     </h2>
-                    <div className="text-center w-full md:w-2/5 px-4 md:px-6 font-medium text-sm md:text-lg">
+                    <div className="text-center w-full md:w-2/5 px-4 md:px-6 mt-6 font-medium text-sm md:text-lg">
                         <div className="text-slate-400 font-normal">
-                            Harness the power of collaboration. Connect with
-                            driven individuals who are eager to work together,
-                            share ideas, and push the boundaries of innovation.
+                            At the heart of progress lies collaboration. Join a
+                            community of driven individuals eager to unite their
+                            talents, share ideas, and redefine innovation.
+                            Together, we'll pave the path to success.
                         </div>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-5xl px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-center">
-                        <div className="bg-white w-3/4 text-black border-2 border-slate-200 rounded-3xl my-2 md:my-10 cursor-pointer flex flex-col items-center justify-center hover:shadow-xl hover:border-slate-300">
+                        <div className="bg-white w-3/4 text-black border-2 border-slate-200 rounded-3xl my-2 md:my-10 cursor-pointer flex flex-col items-center justify-center transition-transform hover:shadow-xl hover:border-white transform hover:scale-105">
                             <Link
                                 href="/team-form"
                                 className="w-full h-30"
@@ -70,7 +69,7 @@ export default function Choices() {
                         </div>
                     </div>
                     <div className="flex items-center justify-center">
-                        <div className="bg-white w-3/4 text-black border-2 border-slate-200 rounded-3xl my-2 md:my-10 cursor-pointer flex flex-col items-center justify-center hover:shadow-xl hover:border-slate-300">
+                        <div className="bg-white w-3/4 text-black border-2 border-slate-200 rounded-3xl my-2 md:my-10 cursor-pointer flex flex-col items-center justify-center transition-transform hover:shadow-xl hover:border-white transform hover:scale-105">
                             <Link
                                 className="w-full h-30"
                                 style={{
