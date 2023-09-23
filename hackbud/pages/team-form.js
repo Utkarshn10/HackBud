@@ -17,23 +17,26 @@ const Form = () => {
     const [githubURL, setGithubURL] = useState('')
     const [twitterURL, setTwitterURL] = useState(null)
     const router = useRouter()
-
+    const [userId, setUserId] = useState(null)
+    
     useEffect(() => {
-        const promise = account.get()
-        promise.then(
-            function (response) {
-                //success
-            },
-            function (error) {
-                console.log('error = ', error) // Failure
+        const fetchData = async () => {
+            try {
+                const response = await account.get()
+                console.log(response.$id)
+                setUserId(response.$id)
+                // Success
+            } catch (error) {
+                console.error('error = ', error) // Failure
                 router.push('/')
             }
-        )
+        }
+
+        fetchData()
     }, [])
 
-    async function SubmitForm(e) {
+    function SubmitForm(e) {
         e.preventDefault()
-        const userId = await account.get().id
         const created_by = userId
         const name = personName
         const about = Description
@@ -106,7 +109,7 @@ const Form = () => {
     return (
         <div className="w-full">
             <form className="flex items-center justify-center w-full min-h-screen py-2 flex-col mb-8 px-4 md:px-0">
-                <h1 className="text-4xl font-bold text-center text-white mt-6 mb-10">
+                <h1 className="text-xl font-bold text-center text-white mt-6 mb-10">
                     Find your HackBuds
                 </h1>
                 <div className="grid grid-cols-2 gap-4">

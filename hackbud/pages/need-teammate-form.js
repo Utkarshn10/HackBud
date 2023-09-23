@@ -18,23 +18,27 @@ const Form = () => {
     const [githubURL, setGithubURL] = useState('')
     const [twitterURL, setTwitterURL] = useState('')
     const router = useRouter()
+    const [userId,setUserId] =useState(null)
+
 
     useEffect(() => {
-        const promise = account.get()
-        promise.then(
-            function (response) {
-                //success
-            },
-            function (error) {
-                console.log('error = ', error) // Failure
+        const fetchData = async () => {
+            try {
+                const response = await account.get()
+                console.log(response.$id)
+                setUserId(response.$id)
+                // Success
+            } catch (error) {
+                console.error('error = ', error) // Failure
                 router.push('/')
             }
-        )
+        }
+
+        fetchData()
     }, [])
 
     async function SubmitForm(e) {
         e.preventDefault()
-        const userId = await account.get().id
         // const about = teamDescription
         // const available = true
         // const contact = contactEmail
@@ -42,6 +46,8 @@ const Form = () => {
         // const twitter_url = twitterURL
         // const skills = teamSkills
         const created_by = userId
+        console.log(userId, created_by)
+
         const data = {
             hackathonName,
             teamName,

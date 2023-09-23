@@ -15,60 +15,73 @@ function Card({ index, item }) {
 
     async function sendEmail(userEmail, teamName) {
         if (isCooldownActive) {
-            toast.error('Please wait for 2 minutes before applying again.')
+            toast.error('Please wait for 2 minutes before applying again.');
         } else {
-            setIsCooldownActive(true)
+            setIsCooldownActive(true);
+            setLoader(true);
+            
+            try {
+                const accountData = await account.get();
+                const userId = accountData.$id;
+                
+                const documents = await databases.listDocuments(
+                    process.env.NEXT_PUBLIC_DB_ID,
+                    process.env.NEXT_PUBLIC_Collection_need_team_ID,
+                    [Query.equal('created_by', [userId])]
+                );
+                
+                const applierEmail = documents.documents[0].contact;
+                const applierName = documents.documents[0].name;
+                const applierGitHub = documents.documents[0].github_url;
+                const applierSkills = documents.documents[0].skills.join();
 
-            setLoader(true)
-            const userId = await account.get().id
-            const documents = await databases.listDocuments(
-                process.env.NEXT_PUBLIC_DB_ID,
-                process.env.NEXT_PUBLIC_Collection_need_team_ID,
-                [Query.equal('created_by', [userId])]
-            )
-            const applierEmail = documents.documents[0].contact
-            const applierName = documents.documents[0].name
-            const applierGitHub = documents.documents[0].github_url
-            const applierSkills = documents.documents[0].skills.join()
-
-            if (
-                applierEmail.length > 0 &&
-                applierName.length > 0 &&
-                applierGitHub.length > 0 &&
-                applierSkills.length > 0
-            ) {
-                if (userEmail === applierEmail) {
-                    toast.error('You cannot apply for you own Team.')
-                } else {
-                    setTimeout(() => {
-                        setIsCooldownActive(false)
-                    }, 120000) // 120,000 milliseconds = 2 minutes
-                    const requestData = {
-                        userEmail,
-                        teamName,
-                        applierEmail,
-                        applierName,
-                        applierGitHub,
-                        applierSkills,
+                
+                if (
+                    applierEmail.length > 0 &&
+                    applierName.length > 0 &&
+                    applierGitHub.length > 0 &&
+                    applierSkills.length > 0
+                ) {
+                    if (userEmail === applierEmail) {
+                        toast.error('You cannot apply for your own Team.');
+                    } else {
+                        setTimeout(() => {
+                            setIsCooldownActive(false);
+                        }, 120000); // 120,000 milliseconds = 2 minutes
+                        
+                        const requestData = {
+                            userEmail,
+                            teamName,
+                            applierEmail,
+                            applierName,
+                            applierGitHub,
+                            applierSkills,
+                        };
+                        
+                        axios
+                            .post('/api/apply-email', requestData)
+                            .then((response) => {
+                                setLoader(false);
+                                toast.success('Email Sent Successfully');
+                            })
+                            .catch((err) => {
+                                setLoader(false);
+                                console.log(err);
+                            });
                     }
-                    axios
-                        .post('/api/apply-email', requestData)
-                        .then((response) => {
-                            setLoader(false)
-                            toast.success('Email Sent Successfully')
-                        })
-                        .catch((err) => {
-                            setLoader(false)
-                            console.log(err)
-                        })
+                } else {
+                    setLoader(false);
+                    toast.error('Please fill Join a Team form to Apply');
                 }
-            } else {
-                setLoader(false)
-
-                toast.error('Please fill Join a Team form to Apply')
+            } catch (error) {
+                console.error(error);
+                setLoader(false);
+                setIsCooldownActive(false);
+                toast.error('Error fetching user data');
             }
         }
     }
+    
 
     return (
         <div className="w-full border rounded-3xl bg-white border-slate-100">
