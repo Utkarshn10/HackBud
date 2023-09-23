@@ -109,7 +109,7 @@ function CardNeedTeammate({ index, item }) {
                         <h1
                             className={`text-sm font-light 'text-black' font-orkney:wght@300 mt-3`}
                         >
-                            {showMore ? item.about : item.about.slice(0, 50)}
+                            {showMore ? item.about : item.about.slice(0, 100)}
                             {item.about.length > 100 && !showMore && (
                                 <button
                                     className=" pl-2 text-purple-500 hover:text-purple-800 cursor-pointer"
