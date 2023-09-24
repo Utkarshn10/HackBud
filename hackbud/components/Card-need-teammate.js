@@ -15,35 +15,35 @@ function CardNeedTeammate({ index, item }) {
 
     async function sendEmail(userEmail, name) {
         if (isCooldownActive) {
-            toast.error('Please wait for 2 minutes before applying again.');
+            toast.error('Please wait for 2 minutes before applying again.')
         } else {
-            setIsCooldownActive(true);
-            setLoader(true);
-    
+            setIsCooldownActive(true)
+            setLoader(true)
+
             try {
-                const userIdResponse = await account.get();
-                const userId = userIdResponse.$id;
-    
+                const userIdResponse = await account.get()
+                const userId = userIdResponse.$id
+
                 const documents = await databases.listDocuments(
                     process.env.NEXT_PUBLIC_DB_ID,
                     process.env.NEXT_PUBLIC_Collection_need_team_ID,
                     [Query.equal('created_by', [userId])]
-                );
-    
+                )
+
                 if (documents.documents.length > 0) {
-                    const document = documents.documents[0];
-    
-                    const applierTeamEmail = document.contactEmail;
-                    const applierTeamName = document.teamName;
-                    const applierTeamDescription = document.teamDescription;
-    
+                    const document = documents.documents[0]
+
+                    const applierTeamEmail = document.contactEmail
+                    const applierTeamName = document.teamName
+                    const applierTeamDescription = document.teamDescription
+
                     if (
                         applierTeamEmail &&
                         applierTeamName &&
                         applierTeamDescription
                     ) {
                         if (userEmail === applierTeamEmail) {
-                            toast.error('You cannot apply for your own Team.');
+                            toast.error('You cannot apply for your own Team.')
                         } else {
                             const requestData = {
                                 userEmail,
@@ -51,29 +51,29 @@ function CardNeedTeammate({ index, item }) {
                                 applierTeamEmail,
                                 applierTeamName,
                                 applierTeamDescription,
-                            };
-    
-                            await axios.post('/api/invite-email', requestData);
-    
-                            setLoader(false);
-                            toast.success('Email Sent Successfully');
+                            }
+
+                            await axios.post('/api/invite-email', requestData)
+
+                            setLoader(false)
+                            toast.success('Email Sent Successfully')
                         }
                     } else {
-                        setLoader(false);
-                        toast.error('Please fill Create Team form to Invite');
+                        setLoader(false)
+                        toast.error('Please fill Create Team form to Invite')
                     }
                 } else {
-                    setLoader(false);
-                    toast.error('No matching document found for this user');
+                    setLoader(false)
+                    toast.error('No matching document found for this user')
                 }
             } catch (error) {
-                console.error('Error:', error);
-                setLoader(false);
-                toast.error('An error occurred while processing your request');
+                console.error('Error:', error)
+                setLoader(false)
+                toast.error('An error occurred while processing your request')
             }
         }
     }
-    
+
     const [showMore, setShowMore] = useState(false)
 
     const toggleShowMore = () => {
@@ -110,11 +110,11 @@ function CardNeedTeammate({ index, item }) {
                             )}
                         </h1>
                     </div>
-                    <div className="my-1 grid grid-cols-3">
+                    <div className="my-1 grid grid-cols-2">
                         {item.skills.map((skill, indexitem) => (
                             <div
                                 key={indexitem}
-                                className="text-xs border font-semibold rounded-2xl flex items-center justify-center bg-white m-1 text-black px-3 py-2"
+                                className="text-xs border font-semibold rounded-2xl flex items-center justify-center bg-white m-1 text-black px-3 py-2 overflow-visible"
                             >
                                 {startCase(skill)}
                             </div>
@@ -168,7 +168,7 @@ function CardNeedTeammate({ index, item }) {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default CardNeedTeammate
