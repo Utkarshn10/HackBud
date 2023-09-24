@@ -64,14 +64,16 @@ function Teammates() {
                             Recommended Teammates
                         </h1>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:w-5/6  py-2 bg-[#141D2C] ">
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:w-5/6 py-2 bg-[#141D2C] ">
                         {data.length > 0 &&
                             data.map((item, index) => (
-                                <div key={index} className='mx-2'>
-                                    <CardNeedTeammate
-                                        index={index}
-                                        item={item}
-                                    />
+                                <div key={index} className="mx-4 md:mx-2">
+                                    <div className="flex flex-col h-full">
+                                        <CardNeedTeammate
+                                            index={index}
+                                            item={item}
+                                        />
+                                    </div>
                                 </div>
                             ))}
                     </div>

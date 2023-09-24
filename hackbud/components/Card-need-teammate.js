@@ -91,34 +91,30 @@ function CardNeedTeammate({ index, item }) {
                 <div className="mx-3 py-1">
                     <div className=" m-2 flex items-center justify-start  text-black">
                         <h2 className="py-2 text-lg font-bold font-Montserrat:wght@300  whitespace-nowrap">
-                            {item.name}
+                            {startCase(item.name)}
                         </h2>
                     </div>
 
                     <div className="my-4 text-black font-orkney:wght@300">
-                        {/* <h3 className="text-sm font-bold font-orkney">
-                            {item.name}
-                        </h3> */}
                         <h1
                             className={`text-sm font-light 'text-black' font-orkney:wght@300 mt-3`}
                         >
-                            {showMore ? item.about : item.about.slice(0, 100)}
-                            {item.about.length > 100 && !showMore && (
+                            {showMore ? item.about : item.about.slice(0, 30)}
+                            {item.about.length > 30 && (
                                 <button
-                                    className=" pl-2 text-purple-500 hover:text-purple-800 cursor-pointer"
+                                    className="pl-2 text-purple-500 hover:text-purple-800 cursor-pointer"
                                     onClick={toggleShowMore}
                                 >
-                                    Read More
+                                    {showMore ? 'Read Less' : 'Read More'}
                                 </button>
                             )}
                         </h1>
                     </div>
-
                     <div className="my-1 grid grid-cols-3">
                         {item.skills.map((skill, indexitem) => (
                             <div
                                 key={indexitem}
-                                className="font-orkney:wght@300 border font-semibold rounded-2xl flex items-center justify-center bg-white m-1 text-black text-xs px-3 py-2"
+                                className="text-xs border font-semibold rounded-2xl flex items-center justify-center bg-white m-1 text-black px-3 py-2"
                             >
                                 {startCase(skill)}
                             </div>
@@ -170,19 +166,9 @@ function CardNeedTeammate({ index, item }) {
                         )}
                     </button>
                 </div>
-
-                {/* {item.twitter_url != null && (
-        <Link
-            className="flex my-3 text-md items-center justify-center text-black mx-4 hover:underline underline-offset-4"
-            href={item.twitter_url}
-        >
-            <AiOutlineTwitter className="text-md" />
-            <h2 className="pl-1">Twitter</h2>
-        </Link>
-    )} */}
             </div>
         </div>
-    )
+    );
 }
 
 export default CardNeedTeammate
