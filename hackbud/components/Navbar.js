@@ -4,7 +4,7 @@ import { Transition } from '@headlessui/react'
 import api from '@/components/appwrite'
 import { useRouter } from 'next/router'
 
-export default function Navbar() {
+export default function Navbar({ documents }) {
     const [isOpen, setIsOpen] = useState(false)
     const [isTabSelected, setIsTabSelected] = useState('')
     const { account, deleteCurrentSession } = api()
@@ -15,13 +15,12 @@ export default function Navbar() {
         const promise = account.get()
         promise.then(
             function (response) {
-                // console.log(response) // Success
                 if (response.status === true) {
                     setIsAuthenticated(true)
                 }
             },
             function (error) {
-                console.log('error = ', error) // Failure
+                console.log('error = ', error)
                 setIsAuthenticated(false)
             }
         )
@@ -34,7 +33,10 @@ export default function Navbar() {
     }
 
     const handleGitHubLogin = () => {
-        account.createOAuth2Session('github', 'https://hack-bud.vercel.app/choices')
+        account.createOAuth2Session(
+            'github',
+            'https://hack-bud.vercel.app/choices'
+        )
     }
 
     return (
@@ -51,7 +53,6 @@ export default function Navbar() {
                                         </div>
                                     </Link>
                                 </div>
-
                                 <div className="hidden md:block">
                                     <div className="ml-10 flex items-baseline space-x-4 justify-center">
                                         <Link
@@ -82,33 +83,40 @@ export default function Navbar() {
                                         >
                                             Join a Team
                                         </Link>
-                                        <Link
-                                            href="/teams"
-                                            onClick={() =>
-                                                setIsTabSelected('teams')
-                                            }
-                                            className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
-                                                isTabSelected == 'teams'
-                                                    ? 'underline underline-offset-8'
-                                                    : ''
-                                            }`}
-                                        >
-                                            Explore Teams
-                                        </Link>
+                                        {documents.total == 0 ? null : (
+                                            <Link
+                                                href="/teams"
+                                                onClick={() =>
+                                                    setIsTabSelected('teams')
+                                                }
+                                                className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
+                                                    isTabSelected == 'teams'
+                                                        ? 'underline underline-offset-8'
+                                                        : ''
+                                                }`}
+                                            >
+                                                Explore Teams
+                                            </Link>
+                                        )}
 
-                                        <Link
-                                            href="/teammates"
-                                            onClick={() =>
-                                                setIsTabSelected('teammates')
-                                            }
-                                            className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
-                                                isTabSelected == 'teammates'
-                                                    ? 'underline underline-offset-8'
-                                                    : ''
-                                            }`}
-                                        >
-                                            Find Teammates
-                                        </Link>
+                                        {/* Conditionally render based on documents */}
+                                        {documents.total == 0 ? null : (
+                                            <Link
+                                                href="/teammates"
+                                                onClick={() =>
+                                                    setIsTabSelected(
+                                                        'teammates'
+                                                    )
+                                                }
+                                                className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
+                                                    isTabSelected == 'teammates'
+                                                        ? 'underline underline-offset-8'
+                                                        : ''
+                                                }`}
+                                            >
+                                                Find Teammates
+                                            </Link>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -218,19 +226,24 @@ export default function Navbar() {
                                     >
                                         Join a Team
                                     </Link>
-                                    <Link
-                                        href="/teams"
-                                        className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
-                                    >
-                                        Explore Teams
-                                    </Link>
+                                    {documents.total == 0 ? null : (
+                                        <Link
+                                            href="/teams"
+                                            className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+                                        >
+                                            Explore Teams
+                                        </Link>
+                                    )}
 
-                                    <Link
-                                        href="/teammates"
-                                        className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                    >
-                                        Find Teammates
-                                    </Link>
+                                    {/* Conditionally render based on documents.length */}
+                                    {documents.total === 0 ? null : (
+                                        <Link
+                                            href="/teammates"
+                                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                        >
+                                            Find Teammates
+                                        </Link>
+                                    )}
                                     <button
                                         onClick={() => logoutClicked()}
                                         className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-semibold"
