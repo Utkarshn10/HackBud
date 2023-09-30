@@ -64,7 +64,7 @@ export default function Choices() {
                                 />
                             </Link>
                             <h2 className="font-semibold text-lg my-3">
-                                I'm looking for a Team
+                            I&apos;m looking for a Team
                             </h2>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ export default function Choices() {
                                 />
                             </Link>
                             <h2 className="font-semibold text-lg my-3">
-                                I'm looking for Teammates
+                                I&apos;m looking for Teammates
                             </h2>
                         </div>
                     </div>
