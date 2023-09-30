@@ -14,9 +14,9 @@ export default function Header() {
             <div className="flex justify-center items-center text-center px-4">
                 <div className="text-3xl md:text-6xl font-bold text-white">
                     Elevate Your{' '}
-                    <span className="px-2 text-white bg-clip-text text-transparent bg-gradient-to-t from-purple-400 via-pink-400 to-white rounded-lg">
+                    <span className="px-2 bg-clip-text text-transparent bg-gradient-to-t from-purple-400 via-pink-400 to-white rounded-lg">
                         Hackathon
-                    </span>{' '}
+                    </span>
                     Game{' '}
                     <p className="flex justify-center mt-2">with HackBud</p>
                 </div>
