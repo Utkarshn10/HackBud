@@ -100,7 +100,7 @@ function CardNeedTeammate({ index, item }) {
                             className={`text-sm font-light 'text-black' font-orkney:wght@300 mt-3`}
                         >
                             {showMore ? item.about : item.about.slice(0, 30)}
-                            {item.about.length > 30 && (
+                            {item?.about.length > 30 && (
                                 <button
                                     className="pl-2 text-purple-500 hover:text-purple-800 cursor-pointer"
                                     onClick={toggleShowMore}
@@ -111,7 +111,7 @@ function CardNeedTeammate({ index, item }) {
                         </h1>
                     </div>
                     <div className="my-1 grid grid-cols-2">
-                        {item.skills.map((skill, indexitem) => (
+                        {item?.skills.map((skill, indexitem) => (
                             <div
                                 key={indexitem}
                                 className="text-xs border font-semibold rounded-2xl flex items-center justify-center bg-white m-1 text-black px-3 py-2 overflow-visible"
@@ -122,12 +122,12 @@ function CardNeedTeammate({ index, item }) {
                     </div>
                 </div>
                 <h2 className="mt-3 text-sm font-semibold text-black mx-4 font-orkney">
-                    {startCase(item.country)}
+                    {startCase(item?.country)}
                 </h2>
                 <div className="flex flex-row">
                     <Link
                         className="flex my-3 text-md items-center justify-center text-black mx-4 hover:underline underline-offset-4"
-                        href={item.github_url}
+                        href={item?.github_url}
                     >
                         <AiFillGithub className="text-md" />
                         <h2 className="pl-1">Github</h2>
@@ -135,7 +135,7 @@ function CardNeedTeammate({ index, item }) {
 
                     <button
                         className="flex m-3 justify-end text-md items-center ml-auto text-white font-semibold rounded-xl bg-purple-500 px-4 py-2 hover:bg-purple-800 hover:text-white"
-                        onClick={() => sendEmail(item.contact, item.name)}
+                        onClick={() => sendEmail(item?.contact, item?.name)}
                     >
                         {!loader ? (
                             <>

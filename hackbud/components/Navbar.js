@@ -45,82 +45,90 @@ export default function Navbar({ documents }) {
                 {isAuthenticated ? (
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex items-center justify-between h-16">
-                            <div className="flex items-center">
-                                <div className="flex-shrink-0">
+                            <div className="flex items-center justify-center">
+                                <div className="flex-shrink-0 ">
                                     <Link href="/">
                                         <div className="text-white font-Montserrat:wght@300  font-bold text-2xl">
                                             HackBud
                                         </div>
                                     </Link>
                                 </div>
-                                <div className="hidden md:block">
-                                    <div className="ml-10 flex items-baseline space-x-4 justify-center">
-                                        <Link
-                                            href="/need-teammate-form"
-                                            onClick={() =>
-                                                setIsTabSelected('team-form')
-                                            }
-                                            className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
-                                                isTabSelected == 'team-form'
-                                                    ? 'underline underline-offset-8'
-                                                    : ''
-                                            }`}
-                                        >
-                                            Create Team
-                                        </Link>
-                                        <Link
-                                            href="/team-form"
-                                            onClick={() =>
-                                                setIsTabSelected(
-                                                    'teammate-form'
-                                                )
-                                            }
-                                            className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
-                                                isTabSelected == 'teammate-form'
-                                                    ? 'underline underline-offset-8'
-                                                    : ''
-                                            }`}
-                                        >
-                                            Join a Team
-                                        </Link>
-                                        {documents.total == 0 ? null : (
+                                <div className="flex items-center justify-center mx-auto">
+                                    <div className="hidden md:block  ">
+                                        <div className="ml-10 flex items-baseline space-x-4 justify-center">
                                             <Link
-                                                href="/teams"
-                                                onClick={() =>
-                                                    setIsTabSelected('teams')
-                                                }
-                                                className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
-                                                    isTabSelected == 'teams'
-                                                        ? 'underline underline-offset-8'
-                                                        : ''
-                                                }`}
-                                            >
-                                                Explore Teams
-                                            </Link>
-                                        )}
-
-                                        {/* Conditionally render based on documents */}
-                                        {documents.total == 0 ? null : (
-                                            <Link
-                                                href="/teammates"
+                                                href="/need-teammate-form"
                                                 onClick={() =>
                                                     setIsTabSelected(
-                                                        'teammates'
+                                                        'team-form'
                                                     )
                                                 }
                                                 className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
-                                                    isTabSelected == 'teammates'
+                                                    isTabSelected == 'team-form'
                                                         ? 'underline underline-offset-8'
                                                         : ''
                                                 }`}
                                             >
-                                                Find Teammates
+                                                Create Team
                                             </Link>
-                                        )}
+                                            <Link
+                                                href="/team-form"
+                                                onClick={() =>
+                                                    setIsTabSelected(
+                                                        'teammate-form'
+                                                    )
+                                                }
+                                                className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
+                                                    isTabSelected ==
+                                                    'teammate-form'
+                                                        ? 'underline underline-offset-8'
+                                                        : ''
+                                                }`}
+                                            >
+                                                Join a Team
+                                            </Link>
+                                            {documents.total == 0 ? null : (
+                                                <Link
+                                                    href="/teams"
+                                                    onClick={() =>
+                                                        setIsTabSelected(
+                                                            'teams'
+                                                        )
+                                                    }
+                                                    className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
+                                                        isTabSelected == 'teams'
+                                                            ? 'underline underline-offset-8'
+                                                            : ''
+                                                    }`}
+                                                >
+                                                    Explore Teams
+                                                </Link>
+                                            )}
+
+                                            {/* Conditionally render based on documents */}
+                                            {documents.total == 0 ? null : (
+                                                <Link
+                                                    href="/teammates"
+                                                    onClick={() =>
+                                                        setIsTabSelected(
+                                                            'teammates'
+                                                        )
+                                                    }
+                                                    className={`text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium ${
+                                                        isTabSelected ==
+                                                        'teammates'
+                                                            ? 'underline underline-offset-8'
+                                                            : ''
+                                                    }`}
+                                                >
+                                                    Find Teammates
+                                                </Link>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="hidden md:block">
+                            <div className="hidden md:block ">
                                 <div className="flex justify-end items-center">
                                     <button
                                         onClick={() => logoutClicked()}

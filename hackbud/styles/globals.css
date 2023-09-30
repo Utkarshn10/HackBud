@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 @import 'fonts.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
     html {
-        font-family: 'orkney', 'Montserrat', sans-serif;
+        font-family: 'Inter','Faro','orkney', 'Montserrat', sans-serif;
+    }
+    h1{
+        font-family: 'Faro', sans-serif;
     }
 }
 

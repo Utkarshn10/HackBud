@@ -99,9 +99,9 @@ function Card({ index, item }) {
                         {/* <h3 className="text-sm font-bold font-orkney">
                             {item.teamName}
                         </h3> */}
-                        <h1 className="text-lg font-bold font-orkney:wght@300">
+                        {/* <h1 className="text-lg font-bold font-orkney:wght@300">
                             {item.hackathonName}
-                        </h1>
+                        </h1> */}
                         <h1 className="text-sm font-light font-orkney:wght@300 mt-3">
                             {item.teamDescription}
                         </h1>

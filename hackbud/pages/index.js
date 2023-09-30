@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import Faq from '@/components/Faq'
 import Header from '@/components/Header'
+import Features from '@/components/Features'
 
 export default function Home() {
     const pageTitle = 'HackBud - Building Hackathon Teams Made Easy'
@@ -37,8 +38,9 @@ export default function Home() {
                 <meta name="author" content="Utkarsh Nagar" />
             </Head>
 
-            <div className="w-full">
+            <div className="w-full bg-[#0F172A]">
                 <Header />
+                <Features />
                 <Faq />
             </div>
         </>
