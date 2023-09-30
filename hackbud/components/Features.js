@@ -10,7 +10,7 @@ export default function Features() {
                     />
                 </div>
                 <div class="md:w-1/2 p-4 md:p-7 text-center md:text-right">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-white">
                         🚀 Discover Your Dream Team
                     </h2>
                     <p class="text-gray-200 pt-1 md:pt-2">
@@ -29,7 +29,7 @@ export default function Features() {
                     />
                 </div>
                 <div class="md:w-1/2 p-4 md:p-7 text-center">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-white">
                         🤝 Team Up for Success
                     </h2>
                     <p class="text-gray-200 pt-1">
@@ -50,7 +50,7 @@ export default function Features() {
                     />
                 </div>
                 <div class="md:w-1/2 p-4 md:p-7 text-center md:text-right">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-white">
                         🌟 Your Dream Team Awaits
                     </h2>
                     <p class="text-gray-200 pt-1">
@@ -72,7 +72,7 @@ export default function Features() {
                     />
                 </div>
                 <div class="md:w-1/2 p-4 md:p-7 text-center">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2">
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-white">
                         📩 Invite Folks to Join Your Teams
                     </h2>
                     <p class="text-gray-200 pt-1">
