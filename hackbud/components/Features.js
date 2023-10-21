@@ -1,6 +1,8 @@
 export default function Features() {
     return (
         <div class="bg-[#141D2C] p-4 md:p-8">
+            <h1 className="flex items-center justify-center font-semibold text-6xl">Features</h1>
+            <h4 className='flex items-center md:justify-center mt-4 md:my-7 text-gray-400 text-md'>Find Teams and Teammates, Apply to Teams, Invite Teammates</h4>
             <div class="container mx-auto  flex flex-col md:flex-row-reverse items-center justify-between mt-4 py-10">
                 <div class="md:w-1/2">
                     <img
