@@ -38,13 +38,12 @@ const Form = () => {
     }, [])
 
     async function SubmitForm(e) {
+        if(teamDescription.length<50){
+            alert("Team description is a bit short. Share a bit more about your awesome team!");
+            return;
+        }
         e.preventDefault()
-        // const about = teamDescription
-        // const available = true
-        // const contact = contactEmail
-        // const github_url = githubURL
-        // const twitter_url = twitterURL
-        // const skills = teamSkills
+       
         const created_by = userId
         console.log(userId, created_by)
 
@@ -84,6 +83,7 @@ const Form = () => {
                 console.log(error)
             })
     }
+    const remainingCharacters = 100 - teamDescription.length;
 
     return (
         <div className="w-full">
@@ -138,6 +138,9 @@ const Form = () => {
                             className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-black"
                             required
                         />
+                        <div className="text-gray-500 text-right">
+                            {remainingCharacters} characters remaining
+                        </div>
                     </div>
                     <div className="mb-4">
                         <label

@@ -36,6 +36,11 @@ const Form = () => {
     }, [])
 
     function SubmitForm(e) {
+        if(Description.length<50){
+            alert("Whoa! Your description is like a teaser trailer. 🍿 How about spicing it up with a bit more about the incredible person you are?")
+            return;
+        }
+        
         e.preventDefault()
         const created_by = userId
         const name = personName
@@ -105,6 +110,7 @@ const Form = () => {
     //     setGithubURL('')
     //     setTwitterURL('')
     // }
+    const remainingCharacters = 100 - Description.length;
 
     return (
         <div className="w-full">
@@ -143,6 +149,9 @@ const Form = () => {
                             className="w-full px-3 py-2 border text-black rounded-md focus:outline-none focus:border-black"
                             required
                         />
+                         <div className="text-gray-500 text-right">
+                            {remainingCharacters} characters remaining
+                        </div>
                     </div>
                     <div className="mb-4">
                         <label
