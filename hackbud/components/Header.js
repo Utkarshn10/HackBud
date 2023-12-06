@@ -30,7 +30,7 @@ export default function Header() {
                         onClick={() => handleGitHubLogin()}
                         className="flex mt-5 md:mb-0 items-center rounded-xl py-4 px-4 justify-center font-lato text-white bg-violet-600 hover:bg-violet-900 text-sm md:text-lg font-normal"
                     >
-                        Get started for Free
+                        Get HackBud
                     </button>
                 </div>
                 <p className="my-5 text-slate-400 flex justify-center">
