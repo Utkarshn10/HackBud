@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { AiFillGithub, AiOutlineMail, AiOutlineTwitter } from 'react-icons/ai'
 import axios from 'axios'
 import api from '@/components/appwrite'
 import { Query } from 'appwrite'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import startCase from 'lodash/startCase'
+import EmailSender from '@/utils/email-sender'
 
 function CardNeedTeammate({ index, item }) {
     const { account, databases } = api()
@@ -42,22 +43,14 @@ function CardNeedTeammate({ index, item }) {
                         applierTeamName &&
                         applierTeamDescription
                     ) {
-                        if (userEmail === applierTeamEmail) {
-                            toast.error('You cannot apply for your own Team.')
-                        } else {
-                            const requestData = {
-                                userEmail,
-                                name,
-                                applierTeamEmail,
-                                applierTeamName,
-                                applierTeamDescription,
-                            }
-
-                            await axios.post('/api/invite-email', requestData)
-
-                            setLoader(false)
-                            toast.success('Email Sent Successfully')
-                        }
+                        EmailSender(
+                            userEmail,
+                            name,
+                            applierTeamEmail,
+                            applierTeamName,
+                            applierTeamDescription,
+                            setLoader
+                        )
                     } else {
                         setLoader(false)
                         toast.error('Please fill Create Team form to Invite')
