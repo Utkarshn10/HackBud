@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useMemo, useState } from 'react'
 import api from '../appwrite'
 export const AuthContext = createContext()
 
@@ -20,8 +20,13 @@ export const AuthProvider = ({ children }) => {
         )
     }, [])
 
+    const AuthObj = useMemo(()=>{
+        let obj = { isAuthenticated, setIsAuthenticated }
+        return obj
+    },[isAuthenticated])
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+        <AuthContext.Provider value={AuthObj}>
             {children}
         </AuthContext.Provider>
     )
