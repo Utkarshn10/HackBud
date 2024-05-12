@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import api from '@/components/appwrite'
-import { ID, Permission, Role } from 'appwrite'
 import Card from '@/components/Card'
 import { useRouter } from 'next/router'
-import Navbar from '@/components/Navbar'
 
 function Teams() {
     const { account, getSession, databases, deleteCurrentSession } = api()

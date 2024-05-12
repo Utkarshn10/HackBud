@@ -1,5 +1,3 @@
-import api from '@/components/appwrite'
-import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import Faq from '@/components/Faq'
 import Header from '@/components/Header'
@@ -9,7 +7,7 @@ export default function Home() {
     const pageTitle = 'HackBud - Building Hackathon Teams Made Easy'
     const pageDescription =
         'Find your dream hackathon team effortlessly with HackBud. Connect with like-minded hackers and make teamwork a breeze. Join us today!'
-    const imageUrl = '[Insert the URL of your social media share image]'
+    const imageUrl = 'https://hack-bud.vercel.app/teammates-main.png'
     const pageUrl = 'https://hack-bud.vercel.app/'
 
     return (
@@ -21,6 +19,8 @@ export default function Home() {
                     name="keywords"
                     content="hackathon teams, team building, hackathon, team finder, teamwork, HackBud"
                 />
+                <meta name="keywords" content="Hackathon,Hackathon Teams, Hackathon Team finder, Hackathon Teammates" />
+
 
                 {/* Open Graph (Facebook, LinkedIn, etc.) */}
                 <meta property="og:title" content={pageTitle} />

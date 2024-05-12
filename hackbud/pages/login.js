@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { MdOutlineCancel } from 'react-icons/md'
 import { useRouter } from 'next/router'
-import { ID } from 'appwrite'
 import api from '@/components/appwrite'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'

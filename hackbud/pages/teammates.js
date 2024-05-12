@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from '@/components/appwrite'
-import { ID, Permission, Role } from 'appwrite'
 import CardNeedTeammate from '@/components/Card-need-teammate'
-import Navbar from '@/components/Navbar'
 import { useRouter } from 'next/router'
 
 function Teammates() {

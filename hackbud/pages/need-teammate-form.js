@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '@/components/appwrite'
 import { ID, Permission, Role } from 'appwrite'
-import Link from 'next/link'
-import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/router'
 
