@@ -1,15 +1,14 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 
 export default function PrivacyPolicy() {
     return (
         <div className="flex flex-col min-h-screen my-8 mx-2">
             <div className="flex items-start justify-start">
-                <Button>
+                <button>
                     <Link href="/">
                         <p>Back</p>
                     </Link>
-                </Button>
+                </button>
             </div>
             <div className="flex items-center justify-center">
                 <h1 className="text-xl font-bold">Privacy Policy</h1>
