@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function PrivacyPolicy() {
     return (
-        <div className="flex flex-col min-h-screen my-8 mx-2">
+        <div className="flex flex-col min-h-screen my-8 mx-2 bg-white">
             <div className="flex items-start justify-start">
                 <button>
                     <Link href="/">
