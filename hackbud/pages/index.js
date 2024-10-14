@@ -19,8 +19,14 @@ export default function Home() {
                     name="keywords"
                     content="hackathon teams, team building, hackathon, team finder, teamwork, HackBud"
                 />
-                <meta name="keywords" content="Hackathon,Hackathon Teams, Hackathon Team finder, Hackathon Teammates" />
-
+                <meta
+                    name="keywords"
+                    content="Hackathon,Hackathon Teams, Hackathon Team finder, Hackathon Teammates"
+                />
+                <meta
+                    name="google-site-verification"
+                    content="zFxVtFthwZ-bvkyLRnr350EaRfEgDJxywPWxeWjyKDc"
+                />
 
                 {/* Open Graph (Facebook, LinkedIn, etc.) */}
                 <meta property="og:title" content={pageTitle} />
