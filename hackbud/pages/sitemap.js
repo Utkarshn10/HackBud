@@ -1,5 +1,3 @@
-import { getServerSideProps } from 'next'
-
 function generateSiteMap() {
     return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
@@ -11,16 +9,14 @@ function generateSiteMap() {
 </urlset>`
 }
 
-function SiteMap() {
+export default function Sitemap() {
     // getServerSideProps will do the heavy lifting
 }
 
 export async function getServerSideProps({ res }) {
-    // We generate the XML sitemap
     const sitemap = generateSiteMap()
 
     res.setHeader('Content-Type', 'text/xml')
-    // we send the XML to the browser
     res.write(sitemap)
     res.end()
 
@@ -28,5 +24,3 @@ export async function getServerSideProps({ res }) {
         props: {},
     }
 }
-
-export default SiteMap
