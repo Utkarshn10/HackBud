@@ -25,7 +25,11 @@ export default function Home() {
                 />
                 <meta
                     name="google-site-verification"
-                    content="zFxVtFthwZ-bvkyLRnr350EaRfEgDJxywPWxeWjyKDc"
+                    content={process.env.NEXT_PUBLIC_ANALYTICS}
+                />
+                <meta
+                    name="google-adsense-account"
+                    content={process.env.NEXT_PUBLIC_AD}
                 />
 
                 {/* Open Graph (Facebook, LinkedIn, etc.) */}
