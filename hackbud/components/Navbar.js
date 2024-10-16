@@ -39,6 +39,10 @@ export default function Navbar({ documents }) {
         )
     }
 
+    const handleGoogleLogin = () => {
+        account.createOAuth2Session('google', 'https://hack-bud.vercel.app/')
+    }
+
     return (
         <div>
             <nav className="bg-[#0F172A] w-full">
@@ -199,7 +203,15 @@ export default function Navbar({ documents }) {
                                     onClick={() => handleGitHubLogin()}
                                     className="text-gray-300 hover:underline underline-offset-8 hover:text-white px-3 py-2 rounded-md text-md font-medium"
                                 >
-                                    Login with GitHub
+                                    Login with Github
+                                </button>
+                            </div>
+                            <div className="ml-10 flex items-baseline space-x-4">
+                                <button
+                                    onClick={() => handleGoogleLogin()}
+                                    className="text-black bg-white hover:underline underline-offset-8 px-3 py-2 rounded-md text-md font-medium"
+                                >
+                                    Google Login
                                 </button>
                             </div>
                         </div>

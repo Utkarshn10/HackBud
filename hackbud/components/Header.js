@@ -8,6 +8,10 @@ export default function Header() {
         account.createOAuth2Session('github', 'https://hack-bud.vercel.app/')
     }
 
+    const handleGoogleLogin = () => {
+        account.createOAuth2Session('google', 'https://hack-bud.vercel.app/')
+    }
+
     return (
         <div className="mt-12 md:my-24 ">
             {' '}
@@ -27,7 +31,7 @@ export default function Header() {
                         Building a team for Hackathons just became a lot easier
                     </p>
                     <button
-                        onClick={() => handleGitHubLogin()}
+                        onClick={() => handleGoogleLogin()}
                         className="flex mt-5 md:mb-0 items-center rounded-xl py-4 px-4 justify-center font-lato text-white bg-violet-600 hover:bg-violet-900 text-sm md:text-lg font-normal"
                     >
                         Get HackBud
