@@ -40,7 +40,10 @@ export default function Navbar({ documents }) {
     }
 
     const handleGoogleLogin = () => {
-        account.createOAuth2Session('google', 'https://hack-bud.vercel.app/')
+        account.createOAuth2Session(
+            'google',
+            'https://hack-bud.vercel.app/choices'
+        )
     }
 
     return (
